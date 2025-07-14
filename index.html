@@ -14,8 +14,10 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0F172A',
-            accent: '#F59E0B'
+            primary: '#00007E',
+            accent: '#F59E0B',
+            titre: '#A52502',
+            texte: '#010221'
           }
         }
       }
@@ -87,51 +89,69 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Nos Services</h2>
         <div class="grid gap-8 md:grid-cols-3">
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-xl font-semibold mb-4">Développement Web & Mobile</h3>
-            <p>Applications sur-mesure, sites e-commerce et plateformes mobiles performantes et évolutives.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-xl font-semibold mb-4">Maintenance Informatique</h3>
-            <p>Supervision, support et infogérance pour garantir la disponibilité de vos systèmes.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-xl font-semibold mb-4">Gestion & Installation caméras</h3>
-            <p>Installation et gestion d'installations de vidéosurveillance adaptées à vos besoins.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="400">
-            <h3 class="text-xl font-semibold mb-4">Hébergement & Cloud</h3>
-            <p>Solutions cloud sécurisées, CI/CD et optimisation des coûts.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="500">
-            <h3 class="text-xl font-semibold mb-4">Cybersécurité</h3>
-            <p>Audit, tests d'intrusion et politiques de sécurité pour protéger vos données.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="600">
-            <h3 class="text-xl font-semibold mb-4">Conseil & Audit IT</h3>
-            <p>Conseils stratégiques pour aligner l’IT sur vos objectifs métier.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="700">
-            <h3 class="text-xl font-semibold mb-4">Impression & Solutions Documentaires</h3>
-            <p>Services d'impression professionnelle et gestion documentaire complète.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="800">
-            <h3 class="text-xl font-semibold mb-4">Formation</h3>
-            <p>Formations sur les nouvelles technologies pour vos équipes.</p>
-          </div>
-          <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-               data-aos="fade-up" data-aos-delay="900">
-            <h3 class="text-xl font-semibold mb-4">Support Informatique</h3>
-            <p>Assistance technique et support utilisateur réactif.</p>
-          </div>
+          <a href="services/developpement.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="100">
+              <h3 class="text-xl font-semibold mb-4">Développement Web & Mobile</h3>
+              <p class="text-texte">Applications sur-mesure, sites e-commerce et plateformes mobiles performantes et évolutives.</p>
+            </div>
+          </a>
+          <a href="services/maintenance.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="200">
+              <h3 class="text-xl font-semibold mb-4">Maintenance Informatique</h3>
+              <p class="text-texte">Supervision, support et infogérance pour garantir la disponibilité de vos systèmes.</p>
+            </div>
+          </a>
+          <a href="services/gestion.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="300">
+              <h3 class="text-xl font-semibold mb-4">Gestion & Installation caméras</h3>
+              <p class="text-texte">Installation et gestion d'installations de vidéosurveillance adaptées à vos besoins.</p>
+            </div>
+          </a>
+          <a href="services/hebergement.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="400">
+              <h3 class="text-xl font-semibold mb-4">Hébergement & Cloud</h3>
+              <p class="text-texte">Solutions cloud sécurisées, CI/CD et optimisation des coûts.</p>
+            </div>
+          </a>
+          <a href="services/cybersec.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="500">
+              <h3 class="text-xl font-semibold mb-4">Cybersécurité</h3>
+              <p class="text-texte">Audit, tests d'intrusion et politiques de sécurité pour protéger vos données.</p>
+            </div>
+          </a>
+          <a href="services/conseil.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="600">
+              <h3 class="text-xl font-semibold mb-4">Conseil & Audit IT</h3>
+              <p class="text-texte">Conseils stratégiques pour aligner l’IT sur vos objectifs métier.</p>
+            </div>
+          </a>
+          <a href="services/impression.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="700">
+              <h3 class="text-xl font-semibold mb-4">Impression & Solutions Documentaires</h3>
+              <p class="text-texte">Services d'impression professionnelle et gestion documentaire complète.</p>
+            </div>
+          </a>
+          <a href="services/formation.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="800">
+              <h3 class="text-xl font-semibold mb-4">Formation</h3>
+              <p class="text-texte">Formations sur les nouvelles technologies pour vos équipes.</p>
+            </div>
+          </a>
+          <a href="services/support.html" class="block">
+            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
+                data-aos="fade-up" data-aos-delay="900">
+              <h3 class="text-xl font-semibold mb-4">Support Informatique</h3>
+              <p class="text-texte">Assistance technique rapide, à distance ou en présentiel, pour tous vos besoins informatiques.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -141,12 +161,12 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">À propos d'IT STRATEGIX</h2>
         <div class="max-w-4xl mx-auto">
-          <p class="mb-6">
+          <p class="mb-6 text-texte">
             Créée par deux ingénieurs passionnés, IT STRATEGIX est une société de services numériques basée au Burkina Faso. 
             Nous mettons <span class="font-semibold">l'expertise technique</span> et <span class="font-semibold">l'engagement qualité</span> 
             au cœur de notre démarche pour offrir à nos clients des solutions innovantes, sécurisées et adaptées à leurs enjeux.
           </p>
-          <p class="text-center">
+          <p class="text-center text-texte">
             Notre vision est de rendre la transformation digitale accessible à toutes les organisations, quel que soit leur secteur ou leur taille.
           </p>
         </div>

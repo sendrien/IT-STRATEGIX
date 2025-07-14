@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Informatique | IT STRATEGIX</title>
+  <link href="../logo.png" rel="shortcut icon" type="image/x-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind & AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00007E',
+            accent: '#F59E0B',
+            secondary: '#1E3A8A'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-white text-primary leading-relaxed">
+
+  <!-- Header -->
+    <header class="bg-white shadow fixed top-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center px-4 py-4">
+            <!-- Logo -->
+            <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
+            
+            <!-- Menu Desktop -->
+            <nav class="space-x-6 hidden md:flex items-center">
+            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
+                Demander un devis
+            </a>
+            </nav>
+
+            <!-- Burger button (mobile) -->
+            <button id="burger" class="md:hidden focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
+            <nav class="flex flex-col space-y-4 p-4">
+            <a href="#services" class="hover:text-primary transition">Services</a>
+            <a href="#about" class="hover:text-primary transition">À propos</a>
+            <a href="#portfolio" class="hover:text-primary transition">Réalisations</a>
+            <a href="#contact" class="hover:text-primary transition">Contact</a>
+            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
+                Demander un devis
+            </a>
+            </nav>
+        </div>
+
+        <!-- Script pour toggle mobile -->
+        <script>
+            const burger = document.getElementById('burger');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            burger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+            });
+        </script>
+    </header>
+
+  <main class="pt-24">
+    <!-- Titre -->
+    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Support Informatique</h1>
+        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+      </div>
+    </section>
+
+    <!-- Contenu -->
+    <section class="py-24 bg-gray-50 space-y-24">
+      <!-- Bloc 1 -->
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+        <div>
+          <h2 class="text-3xl font-bold mb-4 text-secondary">Assistance technique rapide et efficace</h2>
+          <p class="text-gray-700 mb-4">
+            IT STRATEGIX vous offre un support réactif pour maintenir la continuité de vos activités : interventions sur site, assistance à distance, diagnostic et résolution de pannes.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Support bureautique (Word, Excel, messagerie...)</li>
+            <li>Assistance réseau, imprimantes, postes de travail</li>
+            <li>Maintenance préventive et corrective</li>
+            <li>Intervention rapide à Ouagadougou et dans les régions</li>
+            <li>Service Helpdesk multicanal (téléphone, mail, WhatsApp)</li>
+          </ul>
+        </div>
+        <img src="../images/support tech.jpg" alt="Support Informatique" class="rounded-xl shadow-lg" />
+      </div>
+
+      <!-- Bloc 2 -->
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+        <img src="../images/service tech.jpg" alt="Intervention locale" class="rounded-xl shadow-lg order-2 md:order-1" />
+        <div>
+          <h2 class="text-3xl font-bold mb-4 text-secondary">Support adapté au contexte burkinabè</h2>
+          <p class="text-gray-700 mb-4">
+            Notre équipe locale vous accompagne avec des solutions concrètes, même en zone à faible connectivité. Nos techniciens sont formés pour répondre aux besoins des TPE, PME et institutions.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Support même sans accès Internet permanent</li>
+            <li>Intervention planifiée ou en urgence</li>
+            <li>Documentation et formation utilisateur à l’issue</li>
+            <li>Suivi de tickets et rapports d’intervention</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Avantages -->
+      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi faire appel à notre support ?</h2>
+        <p class="text-gray-700 mb-8">
+          Parce que nous garantissons une réactivité, une proximité et une qualité de service à la hauteur de vos enjeux informatiques.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-semibold text-accent mb-2">Disponibilité</h3>
+            <p class="text-gray-600 text-sm">Support rapide 6j/7, sur site ou à distance.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-semibold text-accent mb-2">Compétence</h3>
+            <p class="text-gray-600 text-sm">Techniciens qualifiés, diagnostics précis, résolution efficace.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="text-xl font-semibold text-accent mb-2">Suivi</h3>
+            <p class="text-gray-600 text-sm">Rapports d’intervention clairs et archivage des tickets.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center" data-aos="fade-up">
+        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
+          Contactez notre équipe de support
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>

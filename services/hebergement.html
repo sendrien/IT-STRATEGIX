@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hébergement & Cloud | IT STRATEGIX</title>
+  <link href="../logo.png" rel="shortcut icon" type="image/x-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind & AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00007E',
+            accent: '#F59E0B',
+            secondary: '#1E3A8A'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-white text-primary leading-relaxed">
+
+  <!-- Header -->
+<header class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+        <!-- Logo -->
+        <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
+        
+        <!-- Menu Desktop -->
+        <nav class="space-x-6 hidden md:flex items-center">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
+            Demander un devis
+        </a>
+        </nav>
+
+        <!-- Burger button (mobile) -->
+        <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
+        <nav class="flex flex-col space-y-4 p-4">
+        <a href="#services" class="hover:text-primary transition">Services</a>
+        <a href="#about" class="hover:text-primary transition">À propos</a>
+        <a href="#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
+            Demander un devis
+        </a>
+        </nav>
+    </div>
+
+    <!-- Script pour toggle mobile -->
+    <script>
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+        }
+        });
+    </script>
+</header>
+
+  <main class="pt-24">
+    <!-- Titre -->
+    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Hébergement & Cloud</h1>
+        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+      </div>
+    </section>
+
+    <!-- Contenu -->
+    <section class="py-24 bg-gray-50 space-y-24">
+      <!-- Bloc 1 -->
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+        <div>
+          <h2 class="text-3xl font-bold mb-4 text-secondary">Des infrastructures sécurisées pour vos projets</h2>
+          <p class="text-gray-700 mb-4">
+            Nous proposons des solutions d'hébergement fiables pour vos applications, sites web ou systèmes internes. Nos serveurs sont sécurisés, scalables et adaptés aux besoins croissants de votre organisation.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Hébergement mutualisé ou dédié</li>
+            <li>Serveurs cloud en France, Afrique ou zones localisées</li>
+            <li>Protection contre les attaques (DDoS, malwares...)</li>
+            <li>Certificats SSL et sauvegardes automatiques</li>
+            <li>Suivi et support technique 24h/24</li>
+          </ul>
+        </div>
+        <img src="../images/server.jpg" alt="Hébergement Cloud" class="rounded-xl shadow-lg" />
+        <img src="../images/robot.jpg" alt="Hébergement Cloud" class="rounded-xl shadow-lg" />
+        <img src="../images/lan.jpg" alt="Hébergement Cloud" class="rounded-xl shadow-lg" />
+      </div>
+
+      <!-- Bloc 2 -->
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+        <img src="../images/cloud.jpg" alt="CI/CD & automatisation" class="rounded-xl shadow-lg order-2 md:order-1" />
+        <div>
+          <h2 class="text-3xl font-bold mb-4 text-secondary">CI/CD & automatisation</h2>
+          <p class="text-gray-700 mb-4">
+            Déployez vos applications plus rapidement avec des pipelines CI/CD personnalisés. Automatisez vos processus de mise à jour, sauvegardes, tests et déploiement pour un gain de temps et de fiabilité.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Intégration continue (GitHub, GitLab...)</li>
+            <li>Déploiement automatisé sur serveurs</li>
+            <li>Monitoring en temps réel</li>
+            <li>Optimisation des ressources et des coûts</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bloc Avantages -->
+      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi choisir nos solutions cloud ?</h2>
+        <p class="text-gray-700 mb-8">
+          Nos solutions sont pensées pour les entreprises, administrations et startups au Burkina Faso, avec un accompagnement de proximité et une architecture performante.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-semibold text-accent mb-2">Sécurité renforcée</h3>
+            <p class="text-gray-600 text-sm">Cryptage des données, pare-feu, accès restreints et surveillance constante.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-semibold text-accent mb-2">Flexibilité</h3>
+            <p class="text-gray-600 text-sm">Payez uniquement ce que vous utilisez, évoluez selon vos besoins.</p>
+          </div>
+          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="text-xl font-semibold text-accent mb-2">Support local</h3>
+            <p class="text-gray-600 text-sm">Une assistance technique disponible depuis le Burkina Faso.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center" data-aos="fade-up">
+        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
+          Discutons de votre infrastructure
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-8 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+</body>
+</html>
