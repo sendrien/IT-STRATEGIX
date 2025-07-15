@@ -248,12 +248,13 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Contactez-nous</h2>
         <div class="max-w-3xl mx-auto">
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid gap-6">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="grid gap-6">
             <!-- Anti-spam caché -->
             <input type="hidden" name="form-name" value="contact" />
             <p class="hidden">
               <label>Ne pas remplir : <input name="bot-field" /></label>
             </p>
+
             <!-- Champs visibles -->
             <input type="text" name="name" placeholder="Nom" required
                   class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition" />
@@ -266,6 +267,7 @@
               Envoyer
             </button>
           </form>
+
           <div class="text-center mt-8">
             <p>Email : <a href="mailto:itstrategix226@gmail.com" class="text-primary hover:underline transition">
               itstrategix226@gmail.com
