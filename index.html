@@ -249,19 +249,19 @@
         <h2 class="text-3xl font-bold text-center mb-12">Contactez-nous</h2>
         <div class="max-w-3xl mx-auto">
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid gap-6">
+            <!-- Anti-spam caché -->
+            <input type="hidden" name="form-name" value="contact" />
             <p class="hidden">
               <label>Ne pas remplir : <input name="bot-field" /></label>
             </p>
-            <input type="hidden" name="form-name" value="contact" />
-            <input type="text" name="name" placeholder="Nom"
-                   class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition"
-                   required />
-            <input type="email" name="email" placeholder="E-mail"
-                   class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition"
-                   required />
-            <textarea name="message" rows="5" placeholder="Votre message"
-                      class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition"
-                      required></textarea>
+            <!-- Champs visibles -->
+            <input type="text" name="name" placeholder="Nom" required
+                  class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition" />
+            <input type="email" name="email" placeholder="E-mail" required
+                  class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition" />
+            <textarea name="message" rows="5" placeholder="Votre message" required
+                      class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition"></textarea>
+
             <button type="submit" class="bg-primary text-white font-semibold py-3 rounded-lg hover:bg-opacity-90 transition">
               Envoyer
             </button>
