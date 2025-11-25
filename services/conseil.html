@@ -19,7 +19,8 @@
           colors: {
             primary: '#00007E',
             accent: '#F59E0B',
-            secondary: '#1E3A8A'
+            secondary: '#1E3A8A',
+            texte: '#010221'
           }
         }
       }
@@ -29,149 +30,367 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Dégradé bleu IT STRATEGIX */
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
+
+    /* Petite ligne décorative */
+    .pill {
+      position: relative;
+    }
+    .pill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      padding: 1px;
+      background: linear-gradient(90deg, #00007E, #F59E0B);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
   </style>
 </head>
 
 <body class="bg-white text-primary leading-relaxed">
 
   <!-- Header -->
-    <header class="bg-white shadow fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center px-4 py-4">
-            <!-- Logo -->
-            <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
-            
-            <!-- Menu Desktop -->
-            <nav class="space-x-6 hidden md:flex items-center">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+  <header class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <!-- Logo -->
+      <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">
+        IT STRATEGIX
+      </a>
+      
+      <!-- Menu Desktop -->
+      <nav class="space-x-6 hidden md:flex items-center">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
 
-            <!-- Burger button (mobile) -->
-            <button id="burger" class="md:hidden focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            </button>
+      <!-- Burger button (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
+      <nav class="flex flex-col space-y-4 p-4">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
+    </div>
+
+    <!-- Script pour toggle mobile -->
+    <script>
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </header>
+
+  <main class="pt-28 md:pt-32">
+
+    <!-- Hero split -->
+    <section class="bg-gray-50 pb-20 pt-10 md:pt-16" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+
+        <!-- Texte hero -->
+        <div data-aos="fade-right">
+          <p class="text-xs tracking-[0.3em] text-primary uppercase mb-3">
+            Service
+          </p>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
+            Conseil & Audit IT
+          </h1>
+          <p class="text-gray-600 mb-6 max-w-xl">
+            Nous analysons vos systèmes d’information, vos processus et vos usages numériques
+            pour vous proposer une stratégie IT réaliste, sécurisée et alignée sur vos objectifs métiers.
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Audit des systèmes</span>
+            </span>
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Stratégie numérique</span>
+            </span>
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Optimisation des coûts IT</span>
+            </span>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="../index.html#contact"
+               class="bg-primary text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-90 transition">
+              Discuter de votre projet
+            </a>
+            <a href="../index.html#services"
+               class="text-primary text-sm font-medium underline-offset-4 hover:underline">
+              Voir les autres services
+            </a>
+          </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
-            <nav class="flex flex-col space-y-4 p-4">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+        <!-- Carte visuelle -->
+        <div data-aos="fade-left">
+          <div class="bg-it-gradient rounded-3xl p-1 shadow-2xl">
+            <div class="bg-white rounded-3xl p-6 md:p-8 flex flex-col gap-4 h-full">
+              <div class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-60 flex items-center justify-center">
+                <img src="../images/audit.jpg" alt="Conseil IT"
+                     class="max-h-full max-w-full object-contain">
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">
+                  Aperçu de la mission
+                </p>
+                <p class="text-sm text-gray-700">
+                  Diagnostic de votre parc informatique, de vos applications métiers et de vos pratiques de sécurité,
+                  avec un rapport clair, priorisé et chiffré.
+                </p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                <span class="text-xs text-gray-500">
+                  Secteurs : PME, ONG, institutions, collectivités.
+                </span>
+                <span class="text-xs font-semibold text-primary">
+                  Burkina Faso · Présentiel & distance
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Script pour toggle mobile -->
-        <script>
-            const burger = document.getElementById('burger');
-            const mobileMenu = document.getElementById('mobileMenu');
-
-            burger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            });
-
-            document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-            });
-        </script>
-    </header>
-
-  <main class="pt-24">
-    <!-- Titre -->
-    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Conseil & Audit IT</h1>
-        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
       </div>
     </section>
 
-    <!-- Contenu -->
-    <section class="py-24 bg-gray-50 space-y-24">
-      <!-- Bloc 1 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Aligner votre stratégie numérique à vos objectifs métiers</h2>
-          <p class="text-gray-700 mb-4">
-            Grâce à notre expérience terrain et notre expertise en systèmes d’information, nous vous accompagnons dans vos choix technologiques, vos plans d’investissement IT et l’optimisation de vos processus numériques.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Audit des systèmes existants (infrastructure, logiciels, sécurité)</li>
-            <li>Analyse des besoins métiers</li>
-            <li>Feuille de route IT et recommandations stratégiques</li>
-            <li>Choix de technologies adaptées</li>
-            <li>Suivi de mise en œuvre et accompagnement</li>
-          </ul>
+    <!-- Ce que l’on fait pour vous -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-primary mb-2">
+              Ce que nous faisons pour vous
+            </h2>
+            <p class="text-gray-600 max-w-2xl">
+              Nos interventions couvrent l’ensemble du cycle de vie de votre système d’information :
+              analyse, recommandations, accompagnement et suivi.
+            </p>
+          </div>
         </div>
-        <img src="../images/audit.jpg" alt="Conseil IT" class="rounded-xl shadow-lg" />
-      </div>
 
-      <!-- Bloc 2 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <img src="../images/conseil.jpg" alt="Audit numérique" class="rounded-xl shadow-lg order-2 md:order-1" />
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Un accompagnement adapté au contexte du Burkina Faso</h2>
-          <p class="text-gray-700 mb-4">
-            Nous intervenons auprès des entreprises, ONG, institutions et collectivités pour les aider à tirer le meilleur de leur budget informatique, même modeste, avec des outils fiables et durables.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Diagnostics sur site ou à distance</li>
-            <li>Propositions concrètes et chiffrées</li>
-            <li>Accompagnement local & support de proximité</li>
-            <li>Prise en compte des contraintes réelles (budget, réseau, ressources)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bloc avantages -->
-      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6 text-secondary">Les atouts d'IT STRATEGIX</h2>
-        <p class="text-gray-700 mb-8">
-          Nous sommes à vos côtés pour bâtir une stratégie numérique solide, réaliste et durable.
-        </p>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-            <h3 class="text-xl font-semibold text-accent mb-2">Approche personnalisée</h3>
-            <p class="text-gray-600 text-sm">Chaque mission est adaptée à vos besoins spécifiques.</p>
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Audit & diagnostic</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Cartographie de l’existant, analyse des risques, inventaire des applications et
+              du matériel, points forts et axes d’amélioration.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Infrastructure & réseau</li>
+              <li>• Applications métiers</li>
+              <li>• Sécurité & sauvegardes</li>
+            </ul>
           </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-            <h3 class="text-xl font-semibold text-accent mb-2">Vision stratégique</h3>
-            <p class="text-gray-600 text-sm">Nous pensons à long terme et au service de vos objectifs.</p>
+
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Stratégie & feuille de route</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Recommandations concrètes et priorisées, en tenant compte des contraintes
+              de budget, de ressources humaines et de connectivité.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Plan d’investissement IT</li>
+              <li>• Planning de déploiement</li>
+              <li>• Estimation des coûts et ROI</li>
+            </ul>
           </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
-            <h3 class="text-xl font-semibold text-accent mb-2">Suivi & accompagnement</h3>
-            <p class="text-gray-600 text-sm">Vous n’êtes jamais seuls : conseils, déploiement, formation.</p>
+
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Accompagnement & suivi</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Présence à vos côtés lors de la mise en œuvre : choix des prestataires, validation
+              technique, formation et conduite du changement.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Assistance à maîtrise d’ouvrage</li>
+              <li>• Ateliers métiers</li>
+              <li>• Reporting et indicateurs de suivi</li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- CTA -->
-      <div class="text-center" data-aos="fade-up">
-        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
-          Construisons votre stratégie numérique
-        </a>
+    <!-- Approche en étapes -->
+    <section class="py-16 bg-gray-50" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-10">
+          Notre approche en 4 étapes
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">1</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Comprendre votre contexte</h3>
+              <p class="text-gray-600 text-sm">
+                Entretiens avec les équipes, visite des sites, collecte des documents existants
+                pour saisir vos contraintes réelles (terrain, budget, organisation).
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">2</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Réaliser l’audit technique</h3>
+              <p class="text-gray-600 text-sm">
+                Analyse des infrastructures, des applications, de la sécurité et des usages pour
+                identifier clairement les risques et les opportunités.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">3</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Co-construire la feuille de route</h3>
+              <p class="text-gray-600 text-sm">
+                Restitution des résultats, arbitrage avec vos équipes et définition
+                d’un plan d’action priorisé, réalisable étape par étape.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">4</div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Accompagner la mise en œuvre</h3>
+              <p class="text-gray-600 text-sm">
+                Suivi des chantiers, échanges avec les prestataires, formation des équipes
+                et ajustements réguliers en fonction de votre retour terrain.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi IT STRATEGIX -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-5xl text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+          Pourquoi IT STRATEGIX pour vos audits IT ?
+        </h2>
+        <p class="text-gray-600 mb-10 max-w-3xl mx-auto">
+          Nous combinons expertise technique, connaissance du terrain burkinabè
+          et culture de la pédagogie pour proposer des recommandations applicables, même
+          avec des ressources limitées.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Proximité</h3>
+            <p class="text-gray-600 text-sm">
+              Une équipe basée au Burkina Faso, disponible en présentiel dans vos locaux.
+            </p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Langage clair</h3>
+            <p class="text-gray-600 text-sm">
+              Des rapports compréhensibles par la direction comme par les équipes techniques.
+            </p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Vision long terme</h3>
+            <p class="text-gray-600 text-sm">
+              Des recommandations progressives, pensées pour durer et évoluer avec vous.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="../index.html#contact"
+             class="inline-flex items-center justify-center bg-primary text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-opacity-90 transition">
+            Construisons votre stratégie numérique
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-primary text-white py-8 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
+
 
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

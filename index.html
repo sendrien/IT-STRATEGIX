@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IT STRATEGIX | Solutions Numériques</title>
+
+  <!-- Favicon -->
+  <link href="logo.png" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link href="logo.png" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,42 +29,83 @@
       }
     }
   </script>
+
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Dégradé bleu IT STRATEGIX */
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
+
+    /* Légères bulles décoratives dans le hero */
+    .blob {
+      filter: blur(40px);
+      opacity: 0.35;
+    }
   </style>
 </head>
 <body class="text-primary bg-white leading-relaxed">
 
   <!-- Header / Navigation -->
-  <header class="bg-white shadow fixed w-full z-50">
-    <div class="container mx-auto flex justify-between items-center py-4 px-4">
-      <a href="#home" class="text-xl md:text-2xl font-bold text-primary hover:text-opacity-80 transition">IT STRATEGIX</a>
-      <nav class="space-x-6 hidden md:block">
-        <a href="#services" class="hover:text-primary transition">Services</a>
-        <a href="#about" class="hover:text-primary transition">À propos</a>
-        <a href="#portfolio" class="hover:text-primary transition">Réalisations</a>
-        <a href="#contact" class="hover:text-primary transition">Contact</a>
+  <header class="fixed w-full z-50 bg-white/80 backdrop-blur shadow-sm">
+    <div class="container mx-auto flex justify-between items-center py-3 px-4">
+      <!-- Logo / Brand -->
+      <a href="#home" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-xl bg-it-gradient flex items-center justify-center text-white font-bold text-lg shadow-md">
+          IT
+        </span>
+        <span class="text-lg md:text-xl font-semibold text-primary tracking-wide">
+          IT STRATEGIX
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#services" class="hover:text-primary/80 transition">Services</a>
+        <a href="#about" class="hover:text-primary/80 transition">À propos</a>
+        <a href="#portfolio" class="hover:text-primary/80 transition">Réalisations</a>
+        <a href="#contact" class="hover:text-primary/80 transition">Contact</a>
+        <a href="#contact"
+           class="ml-4 bg-accent text-white px-4 py-2 rounded-full font-semibold text-xs uppercase tracking-wide hover:scale-105 transition transform shadow-sm">
+          Demander un devis
+        </a>
       </nav>
+
+      <!-- Burger (mobile) -->
       <button id="burger" class="md:hidden focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg">
-      <nav class="flex flex-col space-y-4 p-4">
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t">
+      <nav class="flex flex-col space-y-3 p-4 text-sm">
         <a href="#services" class="hover:text-primary transition">Services</a>
         <a href="#about" class="hover:text-primary transition">À propos</a>
         <a href="#portfolio" class="hover:text-primary transition">Réalisations</a>
         <a href="#contact" class="hover:text-primary transition">Contact</a>
+        <a href="#contact"
+           class="mt-2 bg-accent text-white px-4 py-2 rounded-full text-center font-semibold text-xs uppercase tracking-wide hover:scale-105 transition">
+          Demander un devis
+        </a>
       </nav>
     </div>
+
     <script>
       const burger = document.getElementById('burger');
       const mobileMenu = document.getElementById('mobileMenu');
-      burger.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
       document.addEventListener('click', (e) => {
         if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
           mobileMenu.classList.add('hidden');
@@ -67,230 +114,502 @@
     </script>
   </header>
 
-  <main class="pt-20" id="home">
-    <!-- Hero Section -->
-    <section class="bg-primary text-white py-32" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6" data-aos="fade-down" data-aos-delay="200">
-          Votre vision, notre solution digitale
-        </h1>
-        <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-          Nous concevons, sécurisons et optimisons vos solutions informatiques pour créer de la valeur durable.
-        </p>
-        <a href="#contact" class="bg-white text-primary font-semibold px-8 py-3 rounded-full hover:scale-105 transform transition duration-300"
-           data-aos="zoom-in" data-aos-delay="600">
-          Demander un devis
-        </a>
-      </div>
-    </section>
+  <main id="home" class="pt-20">
+    <!-- HERO – layout 2 colonnes -->
+    <section class="bg-it-gradient text-white relative overflow-hidden">
+      <!-- Blobs décoratifs -->
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/40 rounded-full blob"></div>
+      <div class="absolute bottom-0 -right-10 w-48 h-48 bg-white/20 rounded-full blob"></div>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Nos Services</h2>
-        <div class="grid gap-8 md:grid-cols-3">
-          <a href="services/developpement.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="100">
-              <h3 class="text-xl font-semibold mb-4">Développement Web & Mobile</h3>
-              <p class="text-texte">Applications sur-mesure, sites e-commerce et plateformes mobiles performantes et évolutives.</p>
-            </div>
-          </a>
-          <a href="services/maintenance.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="200">
-              <h3 class="text-xl font-semibold mb-4">Maintenance Informatique</h3>
-              <p class="text-texte">Supervision, support et infogérance pour garantir la disponibilité de vos systèmes.</p>
-            </div>
-          </a>
-          <a href="services/gestion.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="300">
-              <h3 class="text-xl font-semibold mb-4">Gestion & Installation caméras</h3>
-              <p class="text-texte">Installation et gestion d'installations de vidéosurveillance adaptées à vos besoins.</p>
-            </div>
-          </a>
-          <a href="services/hebergement.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="400">
-              <h3 class="text-xl font-semibold mb-4">Hébergement & Cloud</h3>
-              <p class="text-texte">Solutions cloud sécurisées, CI/CD et optimisation des coûts.</p>
-            </div>
-          </a>
-          <a href="services/cybersec.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="500">
-              <h3 class="text-xl font-semibold mb-4">Cybersécurité</h3>
-              <p class="text-texte">Audit, tests d'intrusion et politiques de sécurité pour protéger vos données.</p>
-            </div>
-          </a>
-          <a href="services/conseil.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="600">
-              <h3 class="text-xl font-semibold mb-4">Conseil & Audit IT</h3>
-              <p class="text-texte">Conseils stratégiques pour aligner l’IT sur vos objectifs métier.</p>
-            </div>
-          </a>
-          <a href="services/impression.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="700">
-              <h3 class="text-xl font-semibold mb-4">Impression & Solutions Documentaires</h3>
-              <p class="text-texte">Services d'impression professionnelle et gestion documentaire complète.</p>
-            </div>
-          </a>
-          <a href="services/formation.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="800">
-              <h3 class="text-xl font-semibold mb-4">Formation</h3>
-              <p class="text-texte">Formations sur les nouvelles technologies pour vos équipes.</p>
-            </div>
-          </a>
-          <a href="services/support.html" class="block">
-            <div class="bg-white shadow rounded-2xl p-8 hover:shadow-xl hover:scale-105 transition duration-300"
-                data-aos="fade-up" data-aos-delay="900">
-              <h3 class="text-xl font-semibold mb-4">Support Informatique</h3>
-              <p class="text-texte">Assistance technique rapide, à distance ou en présentiel, pour tous vos besoins informatiques.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24" data-aos="fade-up">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">À propos d'IT STRATEGIX</h2>
-        <div class="max-w-4xl mx-auto">
-          <p class="mb-6 text-texte">
-            Créée par deux ingénieurs passionnés, IT STRATEGIX est une société de services numériques basée au Burkina Faso. 
-            Nous mettons <span class="font-semibold">l'expertise technique</span> et <span class="font-semibold">l'engagement qualité</span> 
-            au cœur de notre démarche pour offrir à nos clients des solutions innovantes, sécurisées et adaptées à leurs enjeux.
-          </p>
-          <p class="text-center text-texte">
-            Notre vision est de rendre la transformation digitale accessible à toutes les organisations, quel que soit leur secteur ou leur taille.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio / Illustrations Section -->
-    <section id="portfolio" class="py-24 bg-gray-50" data-aos="fade-up">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Nos Réalisations</h2>
-        <div class="grid gap-8 md:grid-cols-3">
-          <!-- Illustration Item: Image -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-xl transition duration-300"
-              data-aos="zoom-in" data-aos-delay="100">
-            <img src="./vision.png" alt="Projet 1" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-4">Application immobilière (Immo) </h3>
-              <p class="text-gray-600">
-                Immo est une application mobile complète, intuitive et sécurisée spécialement conçue pour 
-                simplifier et optimiser la gestion immobilière au Burkina Faso. Que vous soyez un particulier cherchant à louer ou acheter, 
-                un propriétaire souhaitant gérer efficacement ses biens, 
-                ou encore un professionnel de l’immobilier voulant améliorer la gestion de ses transactions, 
-                Immo est l’outil idéal adapté à vos besoins.
-              </p>
-              <!-- Bouton "Voir l'application" aligné à droite -->
-              <div class="mt-4 text-right">
-                <a href="https://play.google.com/store/apps/details?id=com.broboutik.immo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-block text-blue-600 font-medium bg-white-600  font-semibold px-8 py-3 rounded-full hover:scale-105 transform transition duration-300">
-                  Voir l'application &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- Illustration Item: Texte -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-xl transition duration-300"
-              data-aos="zoom-in" data-aos-delay="100">
-            <img src="./logo_blanc.png" alt="Projet 1" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-4">Application web (brosboutik.com) </h3>
-              <p class="text-gray-600">
-                L'application brosboutik.com a pour Objectif de promouvoir les artistes et commerçants qui n'ont pas les moyens d'atteindre le marché numérique.
-                En tant que vendeur, vous pouvez créer votre boutik, charger vos produits sur boutik afin de les vendre en ligne. Puis en tant que client,
-                vous pouvez visiter toutes les boutiks qui sont en ligne pour éventuellement achéter les produits qui vous plaises. Et l'équipe bros se charge du reste.
-              </p>
-              <!-- Bouton "Voir l'application" aligné à droite -->
-              <div class="mt-4 text-right">
-                <a href="https://brosboutik.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-block text-blue-600 font-medium bg-white-600  font-semibold px-8 py-3 rounded-full hover:scale-105 transform transition duration-300">
-                  Voir l'application &rarr;
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Illustration Item: Vidéo -->
-          <!--<div class="bg-white shadow rounded-2xl overflow-hidden hover:shadow-xl transition duration-300"
-               data-aos="zoom-in" data-aos-delay="300">
-            <video controls class="w-full h-48 object-cover">
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Projet Vidéo</h3>
-              <p class="text-gray-600">Présentation vidéo d'une réalisation complexe ou d'une démo produit.</p>
-            </div>
-          </div>-->
-          <!-- Dupliquez ces blocs pour davantage d’éléments multimédias -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24" data-aos="fade-up">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Contactez-nous</h2>
-        <div class="max-w-3xl mx-auto">
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html" class="grid gap-6">
-            <!-- Anti-spam caché -->
-            <input type="hidden" name="form-name" value="contact" />
-            <p class="hidden">
-              <label>Ne pas remplir : <input name="bot-field" /></label>
+      <div class="container mx-auto px-4 py-24 md:py-32 relative">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Colonne texte -->
+          <div data-aos="fade-right">
+            <p class="uppercase tracking-[0.2em] text-xs mb-3 text-white/70">
+              Société de services numériques · Burkina Faso
+            </p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+              Votre vision,<br />
+              <span class="text-accent">nos solutions digitales</span>
+            </h1>
+            <p class="text-base md:text-lg mb-8 text-white/90 max-w-xl">
+              Nous concevons, sécurisons et optimisons vos systèmes d’information
+              pour créer de la valeur durable, du poste de travail au cloud.
             </p>
 
-            <!-- Champs visibles -->
-            <input type="text" name="name" placeholder="Nom" required
-                  class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition" />
-            <input type="email" name="email" placeholder="E-mail" required
-                  class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition" />
-            <textarea name="message" rows="5" placeholder="Votre message" required
-                      class="border rounded-lg p-4 w-full focus:ring-accent focus:border-accent transition"></textarea>
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="#contact"
+                 class="bg-white text-primary font-semibold px-7 py-3 rounded-full hover:scale-105 transform transition duration-300 shadow-md">
+                Demander un devis
+              </a>
+              <a href="#services"
+                 class="border border-white/70 text-white px-6 py-3 rounded-full text-sm hover:bg-white/10 transition">
+                Voir nos services
+              </a>
+            </div>
 
-            <button type="submit" class="bg-primary text-white font-semibold py-3 rounded-lg hover:bg-opacity-90 transition">
-              Envoyer
-            </button>
-          </form>
+            <div class="mt-8 flex flex-wrap gap-3 text-xs">
+              <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">
+                Développement Web & Mobile
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">
+                Cloud & Infogérance
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">
+                Cybersécurité & Audit IT
+              </span>
+            </div>
+          </div>
 
-          <div class="text-center mt-8">
-            <p>Email : <a href="mailto:itstrategix226@gmail.com" class="text-primary hover:underline transition">
-              itstrategix226@gmail.com
-            </a></p>
-            <p>Téléphone : +226 70 56 79 89</p>
+          <!-- Colonne carte / stats -->
+          <div class="md:pl-6" data-aos="fade-left" data-aos-delay="150">
+            <div class="bg-white/95 text-texte rounded-2xl shadow-xl p-6 md:p-8">
+              <h2 class="text-lg font-semibold mb-4 text-primary">
+                IT STRATEGIX en 3 points
+              </h2>
+              <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-primary">+5</p>
+                  <p class="text-xs text-gray-500">Années<br> d’expérience</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-accent">24/7</p>
+                  <p class="text-xs text-gray-500">Disponibilité<br> & suivi</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-2xl font-bold text-primary">100%</p>
+                  <p class="text-xs text-gray-500">Solutions<br> sur-mesure</p>
+                </div>
+              </div>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex gap-2">
+                  <span class="mt-1 w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] text-accent">✓</span>
+                  <span>Accompagnement complet : conseil, réalisation, maintenance.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] text-accent">✓</span>
+                  <span>Expertise locale pour les réalités du Burkina Faso.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] text-accent">✓</span>
+                  <span>Priorité à la sécurité, la performance et la simplicité d’usage.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- SERVICES – cartes plus structurées -->
+    <section id="services" class="py-24 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <p class="text-xs uppercase tracking-[0.25em] text-primary/60 mb-2">Ce que nous faisons</p>
+          <h2 class="text-3xl font-bold mb-3">Nos Services</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+            Une offre complète pour moderniser, sécuriser et simplifier votre système d’information,
+            du poste utilisateur jusqu’au cloud.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          <!-- Chaque carte garde le lien vers les pages existantes -->
+          <a href="services/developpement.html" class="block" data-aos="fade-up" data-aos-delay="50">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">{"</>"}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Développement Web & Mobile</h3>
+              <p class="text-sm text-gray-600">
+                Applications sur-mesure, sites e-commerce, plateformes mobiles performantes et évolutives.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/maintenance.html" class="block" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">🛠</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Maintenance Informatique</h3>
+              <p class="text-sm text-gray-600">
+                Supervision, support et infogérance pour garantir la disponibilité de vos systèmes.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/gestion.html" class="block" data-aos="fade-up" data-aos-delay="150">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">📹</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Gestion & Installation caméras</h3>
+              <p class="text-sm text-gray-600">
+                Solutions de vidéosurveillance adaptées à vos sites, avec accès distant sécurisé.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/hebergement.html" class="block" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">☁</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Hébergement & Cloud</h3>
+              <p class="text-sm text-gray-600">
+                Infrastructures sécurisées, CI/CD et optimisation des coûts d’exploitation.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/cybersec.html" class="block" data-aos="fade-up" data-aos-delay="250">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">🔒</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Cybersécurité</h3>
+              <p class="text-sm text-gray-600">
+                Audits, tests d’intrusion et politiques de sécurité pour protéger vos données critiques.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/conseil.html" class="block" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">📊</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Conseil & Audit IT</h3>
+              <p class="text-sm text-gray-600">
+                Stratégie numérique, optimisation de vos investissements et structuration de votre SI.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/impression.html" class="block" data-aos="fade-up" data-aos-delay="350">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">🖨</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Impression & Solutions Documentaires</h3>
+              <p class="text-sm text-gray-600">
+                Services d’impression professionnelle et gestion documentaire complète.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/formation.html" class="block" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">🎓</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Formation</h3>
+              <p class="text-sm text-gray-600">
+                Programmes de montée en compétences sur les outils et technologies numériques.
+              </p>
+            </div>
+          </a>
+
+          <a href="services/support.html" class="block" data-aos="fade-up" data-aos-delay="450">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent/50 hover:shadow-lg hover:-translate-y-1 transition">
+              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                <span class="text-accent text-xl">⚙</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2">Support Informatique</h3>
+              <p class="text-sm text-gray-600">
+                Assistance technique rapide, à distance ou sur site, pour tous vos besoins IT.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT – 2 colonnes avec stats -->
+    <section id="about" class="py-24">
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <p class="text-xs uppercase tracking-[0.25em] text-primary/60 mb-2">À propos</p>
+          <h2 class="text-3xl font-bold mb-4">IT STRATEGIX, partenaire de votre transformation numérique</h2>
+          <p class="mb-4 text-texte text-sm md:text-base">
+            Créée par deux ingénieurs passionnés, IT STRATEGIX est une société de services numériques basée au Burkina Faso.
+            Nous mettons <span class="font-semibold">l’expertise technique</span> et <span class="font-semibold">l’engagement qualité</span>
+            au cœur de notre démarche pour offrir des solutions fiables, sécurisées et adaptées à vos réalités.
+          </p>
+          <p class="text-texte text-sm md:text-base">
+            Notre vision : rendre la transformation digitale accessible à toutes les organisations, quelle que soit leur taille,
+            en gardant une approche pragmatique, durable et proche du terrain.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-delay="100">
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+            <p class="text-2xl font-bold text-primary mb-1">+10</p>
+            <p class="text-xs font-semibold uppercase text-gray-500 mb-1">Projets menés</p>
+            <p class="text-xs text-gray-600">Applications, sites web et infrastructures déployés pour des acteurs locaux.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+            <p class="text-2xl font-bold text-primary mb-1">3 pôles</p>
+            <p class="text-xs font-semibold uppercase text-gray-500 mb-1">Clés</p>
+            <p class="text-xs text-gray-600">Ingénierie logicielle, cloud & systèmes, cybersécurité & conseil.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+            <p class="text-2xl font-bold text-primary mb-1">Proximité</p>
+            <p class="text-xs font-semibold uppercase text-gray-500 mb-1">Terrain</p>
+            <p class="text-xs text-gray-600">Interventions au Burkina Faso, avec un support réactif et local.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+            <p class="text-2xl font-bold text-primary mb-1">Qualité</p>
+            <p class="text-xs font-semibold uppercase text-gray-500 mb-1">Engagée</p>
+            <p class="text-xs text-gray-600">Processus documentés, suivi et accompagnement dans la durée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="py-24 bg-gray-50" data-aos="fade-up">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-10">Nos Réalisations</h2>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- Carte Immo -->
+          <div
+            class="bg-white shadow-sm rounded-2xl overflow-hidden hover:shadow-md transition duration-300"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <!-- Zone image plus compacte -->
+            <div class="h-40 md:h-44 flex items-center justify-center bg-gray-50 overflow-hidden">
+              <img
+                src="./vision.png"
+                alt="Application immobilière Immo"
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-3">
+                Application immobilière (Immo)
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Immo est une application mobile complète, intuitive et sécurisée spécialement
+                conçue pour simplifier et optimiser la gestion immobilière au Burkina Faso.
+                Que vous soyez un particulier cherchant à louer ou acheter, un propriétaire
+                souhaitant gérer efficacement ses biens, ou encore un professionnel de
+                l’immobilier voulant améliorer la gestion de ses transactions, Immo est
+                l’outil idéal adapté à vos besoins.
+              </p>
+              <div class="mt-3 text-right">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.broboutik.immo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block text-blue-600 text-sm font-medium px-5 py-2.5 rounded-full border border-blue-600 hover:scale-105 transform transition duration-300"
+                >
+                  Voir l'application &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte brosboutik -->
+          <div
+            class="bg-white shadow-sm rounded-2xl overflow-hidden hover:shadow-md transition duration-300"
+            data-aos="zoom-in"
+            data-aos-delay="150"
+          >
+            <!-- Zone image plus compacte -->
+            <div class="h-40 md:h-44 flex items-center justify-center bg-gray-50 overflow-hidden">
+              <img
+                src="./logo_blanc.png"
+                alt="Plateforme brosboutik.com"
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-3">
+                Application web (brosboutik.com)
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                L'application brosboutik.com a pour objectif de promouvoir les artistes
+                et commerçants qui n'ont pas les moyens d'atteindre le marché numérique.
+                En tant que vendeur, vous pouvez créer votre boutik, charger vos produits
+                sur boutik afin de les vendre en ligne. Puis en tant que client, vous
+                pouvez visiter toutes les boutiks qui sont en ligne pour éventuellement
+                acheter les produits qui vous plaisent. Et l'équipe bros se charge du reste.
+              </p>
+              <div class="mt-3 text-right">
+                <a
+                  href="https://brosboutik.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block text-blue-600 text-sm font-medium px-5 py-2.5 rounded-full border border-blue-600 hover:scale-105 transform transition duration-300"
+                >
+                  Voir l'application &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CONTACT – 2 colonnes, formulaire & infos -->
+    <section id="contact" class="py-24 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Titre + sous-titre -->
+        <p class="text-center text-xs tracking-[0.3em] text-primary mb-2 uppercase">Contact</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-primary">
+          Discutons de votre projet
+        </h2>
+        <p class="text-center text-gray-500 max-w-3xl mx-auto mb-12">
+          Expliquez-nous vos besoins : nous reviendrons vers vous avec des pistes concrètes,
+          adaptées à votre budget et à votre contexte.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <!-- Carte coordonnées -->
+          <div class="bg-it-gradient text-white rounded-3xl p-8 shadow-xl">
+            <h3 class="text-2xl font-semibold mb-4">Nos coordonnées</h3>
+            <p class="text-sm text-gray-100 mb-6">
+              Vous pouvez nous contacter par e-mail, téléphone ou via le formulaire.
+              Nous vous répondons dans les plus brefs délais.
+            </p>
+
+            <p class="font-semibold mb-1">Email :</p>
+            <p class="mb-4">
+              <a href="mailto:itstrategix226@gmail.com" class="underline">
+                itstrategix226@gmail.com
+              </a>
+            </p>
+
+            <p class="font-semibold mb-1">Téléphone :</p>
+            <p class="mb-6">
+              +226 70 56 79 89
+            </p>
+
+            <p class="text-xs opacity-80">
+              IT STRATEGIX (SARL) · Services numériques · Burkina Faso.
+            </p>
+          </div>
+
+          <!-- Carte formulaire -->
+          <div class="bg-white rounded-3xl shadow-xl p-8">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="services/merci.html"
+              class="space-y-6"
+            >
+              <!-- Netlify anti-spam -->
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden">
+                <label>Ne pas remplir : <input name="bot-field" /></label>
+              </p>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="name">
+                  Nom complet
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  required
+                  class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none
+                        focus:ring-2 focus:ring-accent focus:border-transparent"
+                  placeholder="Votre nom et prénom"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="email">
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none
+                        focus:ring-2 focus:ring-accent focus:border-transparent"
+                  placeholder="votre.adresse@email.com"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="message">
+                  Votre message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full rounded-xl border border-gray-200 px-4 py-3 resize-none
+                        focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  placeholder="Décrivez brièvement votre besoin, votre contexte et vos objectifs."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-primary text-white font-semibold py-3 rounded-xl
+                      hover:bg-opacity-90 transition shadow-md">
+                Envoyer votre demande
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-white py-8" >
-    <div class="container mx-auto px-4 text-center space-y-4">
-      <p>&copy; 2025 IT STRATEGIX<small>(SARL)</small>. Tous droits réservés.</p>
-      <!--<div class="space-x-4">
-        <a href="#" class="hover:text-gray-300 transition">LinkedIn</a>
-        <a href="#" class="hover:text-gray-300 transition">Facebook</a>
-        <a href="#" class="hover:text-gray-300 transition">WhatsApp</a>
-      </div>-->
+  <!-- FOOTER -->
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
 
+
+  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ once: true, duration: 800 });

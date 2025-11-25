@@ -19,7 +19,8 @@
           colors: {
             primary: '#00007E',
             accent: '#F59E0B',
-            secondary: '#1E3A8A'
+            secondary: '#1E3A8A',
+            texte: '#010221'
           }
         }
       }
@@ -29,149 +30,342 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Dégradé bleu IT STRATEGIX pour le footer */
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
   </style>
 </head>
 
-<body class="bg-white text-primary leading-relaxed">
+<body class="bg-white text-texte leading-relaxed">
 
   <!-- Header -->
-    <header class="bg-white shadow fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center px-4 py-4">
-            <!-- Logo -->
-            <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
-            
-            <!-- Menu Desktop -->
-            <nav class="space-x-6 hidden md:flex items-center">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+  <header class="bg-white/95 backdrop-blur shadow fixed top-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <!-- Logo -->
+      <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-80 transition">
+        IT STRATEGIX
+      </a>
+      
+      <!-- Menu Desktop -->
+      <nav class="space-x-6 hidden md:flex items-center text-sm">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
 
-            <!-- Burger button (mobile) -->
-            <button id="burger" class="md:hidden focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            </button>
-        </div>
+      <!-- Burger button (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
-            <nav class="flex flex-col space-y-4 p-4">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
-        </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg">
+      <nav class="flex flex-col space-y-4 p-4 text-sm">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-center text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
+    </div>
 
-        <!-- Script pour toggle mobile -->
-        <script>
-            const burger = document.getElementById('burger');
-            const mobileMenu = document.getElementById('mobileMenu');
+    <!-- Script pour toggle mobile -->
+    <script>
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
 
-            burger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            });
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
 
-            document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-            });
-        </script>
-    </header>
+      document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </header>
 
   <main class="pt-24">
-    <!-- Titre -->
-    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Impression & Solutions Documentaires</h1>
-        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+    <!-- HERO clair & moderne -->
+    <section class="py-16 md:py-20 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Texte -->
+        <div>
+          <p class="text-xs tracking-[0.25em] uppercase text-primary/60 mb-3">
+            Service · Impression & solutions documentaires
+          </p>
+          <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Impression professionnelle & gestion documentaire moderne
+          </h1>
+          <p class="text-sm md:text-base text-gray-700 mb-6 max-w-xl">
+            De la simple impression de documents aux solutions complètes de gestion
+            documentaire, IT STRATEGIX vous accompagne pour des supports clairs,
+            durables et parfaitement organisés.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-7 text-xs">
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Impression & finition pro
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Numérisation & archivage
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Solutions cloud documentaires
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="../index.html#contact"
+               class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-secondary transition">
+              Demander un devis d'impression
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500">
+              Pour entreprises, écoles, ONG et administrations au Burkina Faso.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte visuelle -->
+        <div class="max-w-md w-full mx-auto">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6">
+            <div class="relative rounded-2xl overflow-hidden mb-4">
+              <img
+                src="../images/impres.jpg"
+                alt="Service d'impression"
+                class="w-full h-52 md:h-64 object-cover"
+              />
+              <div class="absolute bottom-3 left-3 bg-black/60 text-white text-[11px] px-3 py-1 rounded-full">
+                Impression couleur · Finitions soignées
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-[11px] text-gray-600">
+              <div>
+                <p class="font-semibold text-primary">Docs & supports</p>
+                <p>Rapports, flyers, affiches, supports pédagogiques.</p>
+              </div>
+              <div>
+                <p class="font-semibold text-primary">Prêt à diffuser</p>
+                <p>Reliure, plastification, découpe & livraison.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contenu -->
-    <section class="py-24 bg-gray-50 space-y-24">
-      <!-- Bloc 1 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+    <!-- SECTION : Impression professionnelle -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Texte -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Impression professionnelle pour tous vos besoins</h2>
-          <p class="text-gray-700 mb-4">
-            Nous proposons des services d’impression de haute qualité pour entreprises, écoles, ONG et administrations. De la production à la finition, notre objectif est la clarté, la rapidité et la durabilité.
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+            Impression professionnelle pour tous vos besoins
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-4">
+            Nous proposons des services d’impression de haute qualité pour entreprises,
+            écoles, ONG et administrations. De la production à la finition, l’objectif
+            est la lisibilité, la rapidité et la durabilité.
           </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Impression couleur et noir/blanc (documents, flyers, affiches)</li>
-            <li>Photocopies et duplications en masse</li>
-            <li>Reliure, plastification, découpe professionnelle</li>
-            <li>Gestion de dossiers et impressions à la demande</li>
-            <li>Livraison de documents à domicile ou en entreprise</li>
-          </ul>
-        </div>
-        <img src="../images/impres.jpg" alt="Service d'impression" class="rounded-xl shadow-lg" />
-        <img src="../images/imprime.jpg" alt="Service d'impression" class="rounded-xl shadow-lg" />
-      </div>
 
-      <!-- Bloc 2 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <img src="../images/numerise.jpg" alt="Solutions documentaires" class="rounded-xl shadow-lg order-2 md:order-1" />
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Gestion documentaire moderne & numérique</h2>
-          <p class="text-gray-700 mb-4">
-            IT STRATEGIX vous accompagne dans la mise en place de solutions digitales de gestion documentaire : archivage, numérisation, classement, partage sécurisé.
+          <div class="grid gap-4 text-sm">
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <p class="font-semibold text-primary mb-1">Impression & copies</p>
+              <ul class="list-disc list-inside text-gray-700 text-xs md:text-sm space-y-1">
+                <li>Impression couleur et noir/blanc (documents, flyers, affiches).</li>
+                <li>Photocopies et duplications en masse.</li>
+              </ul>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <p class="font-semibold text-primary mb-1">Finitions & logistique</p>
+              <ul class="list-disc list-inside text-gray-700 text-xs md:text-sm space-y-1">
+                <li>Reliure, plastification, découpe professionnelle.</li>
+                <li>Gestion de dossiers et impressions à la demande.</li>
+                <li>Livraison de documents à domicile ou en entreprise.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mosaïque images -->
+        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+          <div class="col-span-2 rounded-3xl overflow-hidden shadow-lg">
+            <img
+              src="../images/imprime.jpg"
+              alt="Imprimante professionnelle"
+              class="w-full h-44 md:h-52 object-cover"
+            />
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-md">
+            <img
+              src="../images/impres.jpg"
+              alt="Service d'impression"
+              class="w-full h-32 md:h-36 object-cover"
+            />
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-md">
+            <img
+              src="../images/numerise.jpg"
+              alt="Numérisation de documents"
+              class="w-full h-32 md:h-36 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : Gestion documentaire -->
+    <section class="py-16 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Image -->
+        <div class="order-2 md:order-1">
+          <img
+            src="../images/numerise.jpg"
+            alt="Solutions documentaires"
+            class="w-full h-64 md:h-72 rounded-3xl object-cover shadow-lg"
+          />
+        </div>
+
+        <!-- Texte -->
+        <div class="order-1 md:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+            Gestion documentaire moderne & numérique
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-4">
+            IT STRATEGIX vous accompagne dans la mise en place de solutions digitales
+            de gestion documentaire : archivage, numérisation, classement, partage sécurisé
+            et accès simplifié à vos informations clés.
           </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Numérisation de documents physiques</li>
-            <li>Organisation et indexation de vos archives</li>
-            <li>Solutions cloud pour le stockage et l’accès distant</li>
-            <li>Sécurité et traçabilité des accès</li>
-            <li>Formation à la gestion documentaire</li>
+          <ul class="list-disc list-inside text-sm md:text-base text-gray-700 space-y-1.5 mb-4">
+            <li>Numérisation de documents physiques.</li>
+            <li>Organisation et indexation de vos archives.</li>
+            <li>Solutions cloud pour le stockage et l’accès distant.</li>
+            <li>Sécurité et traçabilité des accès.</li>
+            <li>Formation à la gestion documentaire.</li>
           </ul>
+
+          <div class="flex flex-wrap gap-2 text-[11px] text-gray-600">
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Réduction du papier
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Recherche rapide
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Conformité & sécurité
+            </span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Bloc avantages -->
-      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi nous choisir ?</h2>
-        <p class="text-gray-700 mb-8">
-          Avec IT STRATEGIX, vous bénéficiez d’un service rapide, de qualité et adapté à vos contraintes techniques ou budgétaires au Burkina Faso.
+    <!-- SECTION : Avantages -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-4xl text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+          Pourquoi nous choisir ?
+        </h2>
+        <p class="text-sm md:text-base text-gray-700">
+          Avec IT STRATEGIX, vous bénéficiez d’un service rapide, de qualité et
+          adapté à vos contraintes techniques ou budgétaires au Burkina Faso.
         </p>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-            <h3 class="text-xl font-semibold text-accent mb-2">Qualité & réactivité</h3>
-            <p class="text-gray-600 text-sm">Matériel performant, impression rapide et finitions soignées.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-            <h3 class="text-xl font-semibold text-accent mb-2">Solutions sur-mesure</h3>
-            <p class="text-gray-600 text-sm">Pour vos événements, rapports, documents internes ou clients.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
-            <h3 class="text-xl font-semibold text-accent mb-2">Accompagnement complet</h3>
-            <p class="text-gray-600 text-sm">Du support technique à la livraison, nous sommes à vos côtés.</p>
-          </div>
-        </div>
       </div>
 
-      <!-- CTA -->
-      <div class="text-center" data-aos="fade-up">
-        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
-          Demandez un devis d'impression
-        </a>
+      <div class="container mx-auto px-4 max-w-5xl grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Qualité & réactivité</h3>
+          <p class="text-gray-600 text-sm">
+            Matériel performant, impression rapide, couleurs fidèles et finitions soignées.
+          </p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Solutions sur-mesure</h3>
+          <p class="text-gray-600 text-sm">
+            Supports pour vos événements, rapports, documents internes ou destinés à vos clients.
+          </p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Accompagnement complet</h3>
+          <p class="text-gray-600 text-sm">
+            Du conseil à la livraison, en passant par la mise en place de solutions documentaires.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA finale -->
+    <section class="py-16 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-white border border-gray-100 rounded-3xl shadow-sm px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-2">
+              Un projet d'impression ou de numérisation&nbsp;?
+            </h2>
+            <p class="text-sm md:text-base text-gray-700 max-w-xl">
+              Partagez vos besoins (type de documents, volumes, délais, livrables) et nous
+              vous proposerons une solution adaptée, claire et chiffrée.
+            </p>
+          </div>
+          <div class="flex flex-col items-stretch gap-3 text-sm w-full md:w-auto">
+            <a href="../index.html#contact"
+               class="inline-flex justify-center items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transition">
+              Demandez un devis d'impression
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500 text-center md:text-right">
+              Ou appelez-nous au <span class="font-semibold">+226 70 56 79 89</span>.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-white py-8 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+  <!-- Footer identique à l'accueil, avec drapeau 🇧🇫 -->
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
 

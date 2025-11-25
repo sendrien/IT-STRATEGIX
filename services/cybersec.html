@@ -19,7 +19,8 @@
           colors: {
             primary: '#00007E',
             accent: '#F59E0B',
-            secondary: '#1E3A8A'
+            secondary: '#1E3A8A',
+            texte: '#010221'
           }
         }
       }
@@ -29,6 +30,28 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Dégradé bleu IT STRATEGIX */
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
+
+    .pill {
+      position: relative;
+    }
+    .pill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      padding: 1px;
+      background: linear-gradient(90deg, #00007E, #F59E0B);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
   </style>
 </head>
 
@@ -36,143 +59,337 @@
 
   <!-- Header -->
   <header class="bg-white shadow fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center px-4 py-4">
-            <!-- Logo -->
-            <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
-            
-            <!-- Menu Desktop -->
-            <nav class="space-x-6 hidden md:flex items-center">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <!-- Logo -->
+      <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">
+        IT STRATEGIX
+      </a>
+      
+      <!-- Menu Desktop -->
+      <nav class="space-x-6 hidden md:flex items-center">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
 
-            <!-- Burger button (mobile) -->
-            <button id="burger" class="md:hidden focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            </button>
+      <!-- Burger button (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
+      <nav class="flex flex-col space-y-4 p-4">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
+    </div>
+
+    <!-- Script pour toggle mobile -->
+    <script>
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </header>
+
+  <main class="pt-28 md:pt-32">
+
+    <!-- Hero split -->
+    <section class="bg-gray-50 pb-20 pt-10 md:pt-16" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+
+        <!-- Texte hero -->
+        <div data-aos="fade-right">
+          <p class="text-xs tracking-[0.3em] text-primary uppercase mb-3">
+            Service
+          </p>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
+            Cybersécurité
+          </h1>
+          <p class="text-gray-600 mb-6 max-w-xl">
+            Nous vous accompagnons pour sécuriser vos données, vos infrastructures et vos applications,
+            avec des solutions adaptées au contexte burkinabè et à vos contraintes de budget.
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Audit de sécurité</span>
+            </span>
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Tests d’intrusion</span>
+            </span>
+            <span class="pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-white/70">
+              <span class="relative">Sensibilisation des équipes</span>
+            </span>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="../index.html#contact"
+               class="bg-primary text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-opacity-90 transition">
+              Renforcer ma sécurité
+            </a>
+            <a href="../index.html#services"
+               class="text-primary text-sm font-medium underline-offset-4 hover:underline">
+              Voir les autres services
+            </a>
+          </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
-            <nav class="flex flex-col space-y-4 p-4">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+        <!-- Carte visuelle -->
+        <div data-aos="fade-left">
+          <div class="bg-it-gradient rounded-3xl p-1 shadow-2xl">
+            <div class="bg-white rounded-3xl p-6 md:p-8 flex flex-col gap-4 h-full">
+              <div class="rounded-2xl overflow-hidden bg-gray-100 h-52 md:h-60 flex items-center justify-center">
+                <!-- Une seule image, bien cadrée -->
+                <img src="../images/secu.jpg" alt="Sécurité des données"
+                     class="max-h-full max-w-full object-contain">
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">
+                  Aperçu de la mission
+                </p>
+                <p class="text-sm text-gray-700">
+                  Identification des failles, recommandations concrètes, plan d’actions priorisé
+                  et accompagnement pour renforcer vos défenses face aux cybermenaces.
+                </p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                <span class="text-xs text-gray-500">
+                  Secteurs : PME, ONG, institutions, écoles.
+                </span>
+                <span class="text-xs font-semibold text-primary">
+                  Burkina Faso · Présentiel & distance
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Script pour toggle mobile -->
-        <script>
-            const burger = document.getElementById('burger');
-            const mobileMenu = document.getElementById('mobileMenu');
-
-            burger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            });
-
-            document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-            });
-        </script>
-    </header>
-
-  <main class="pt-24">
-    <!-- Titre -->
-    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Cybersécurité</h1>
-        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
       </div>
     </section>
 
-    <!-- Contenu -->
-    <section class="py-24 bg-gray-50 space-y-24">
-      <!-- Bloc 1 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Protégez vos données et vos systèmes</h2>
-          <p class="text-gray-700 mb-4">
-            Face à la montée des cybermenaces, IT STRATEGIX vous aide à sécuriser vos infrastructures, vos applications et vos données sensibles à travers des audits complets et des solutions robustes.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Audit de sécurité réseau & applicatif</li>
-            <li>Tests d'intrusion (pentests)</li>
-            <li>Mise en place de politiques de sécurité</li>
-            <li>Sensibilisation et formation des équipes</li>
-            <li>Gestion des incidents et plans de reprise</li>
-          </ul>
+    <!-- Ce que l’on fait pour vous -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-primary mb-2">
+              Ce que nous faisons pour vous
+            </h2>
+            <p class="text-gray-600 max-w-2xl">
+              Nous couvrons l’ensemble du cycle de sécurité : de l’audit initial à la gestion
+              des incidents, en passant par la sensibilisation et la mise en place de protections.
+            </p>
+          </div>
         </div>
-        <img src="../images/mdp.jpg" alt="Sécurité des données" class="rounded-xl shadow-lg" />
-        <img src="../images/virus.jpg" alt="Sécurité des données" class="rounded-xl shadow-lg" />
-      </div>
 
-      <!-- Bloc 2 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <img src="../images/secu.jpg" alt="Sécurité informatique" class="rounded-xl shadow-lg order-2 md:order-1" />
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Une cybersécurité adaptée au Burkina Faso</h2>
-          <p class="text-gray-700 mb-4">
-            Nos solutions tiennent compte du contexte local et des ressources disponibles. Nous accompagnons les PME, administrations et structures dans la mise en conformité progressive.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Outils légers et efficaces</li>
-            <li>Support local et réactif</li>
-            <li>Rapports personnalisés et pédagogiques</li>
-            <li>Formations adaptées à tous niveaux</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Avantages -->
-      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi faire appel à IT STRATEGIX ?</h2>
-        <p class="text-gray-700 mb-8">
-          Notre approche pédagogique, notre proximité terrain et notre expertise vous garantissent des résultats concrets, même avec des budgets raisonnables.
-        </p>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-            <h3 class="text-xl font-semibold text-accent mb-2">Audit fiable</h3>
-            <p class="text-gray-600 text-sm">Identification claire des failles techniques et humaines.</p>
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Audit & diagnostic</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Analyse de votre réseau, de vos serveurs, de vos postes et de vos applications
+              pour identifier les vulnérabilités techniques et organisationnelles.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Cartographie des risques</li>
+              <li>• Analyse des accès et mots de passe</li>
+              <li>• Évaluation des sauvegardes</li>
+            </ul>
           </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-            <h3 class="text-xl font-semibold text-accent mb-2">Solutions pratiques</h3>
-            <p class="text-gray-600 text-sm">Outils simples à déployer, peu coûteux et efficaces.</p>
+
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Protection & gouvernance</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Mise en place de politiques de sécurité, procédures et outils pour réduire
+              l’exposition aux attaques dans la durée.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Politiques de mot de passe & accès</li>
+              <li>• Sécurisation réseau & postes</li>
+              <li>• Plans de sauvegarde & reprise</li>
+            </ul>
           </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
-            <h3 class="text-xl font-semibold text-accent mb-2">Suivi continu</h3>
-            <p class="text-gray-600 text-sm">Accompagnement dans la durée avec des contrôles réguliers.</p>
+
+          <div class="bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-3">Sensibilisation & réponse</h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Formation des équipes, simulations d’attaques et accompagnement en cas d’incident
+              pour limiter les impacts sur votre activité.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Ateliers utilisateurs & administrateurs</li>
+              <li>• Simulations de phishing</li>
+              <li>• Gestion d’incident & communication</li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- CTA -->
-      <div class="text-center" data-aos="fade-up">
-        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
-          Renforçons votre sécurité numérique
-        </a>
+    <!-- Approche en étapes -->
+    <section class="py-16 bg-gray-50" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-10">
+          Notre approche en 4 étapes
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">1</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Analyse de la situation</h3>
+              <p class="text-gray-600 text-sm">
+                Entretien avec vos équipes, inventaire des équipements, collecte des incidents déjà survenus
+                pour comprendre votre niveau de maturité en cybersécurité.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">2</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Tests & diagnostic</h3>
+              <p class="text-gray-600 text-sm">
+                Réalisation d’analyses techniques (scans, tests d’intrusion, vérification des sauvegardes)
+                et identification des faiblesses prioritaires.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">3</div>
+              <div class="w-px flex-1 bg-gray-300 mt-1"></div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Plan d’actions réaliste</h3>
+              <p class="text-gray-600 text-sm">
+                Élaboration d’un plan de sécurisation par étapes, adapté à vos moyens et à votre
+                organisation (court, moyen et long terme).
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center mr-2">
+              <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">4</div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-secondary">Mise en œuvre & suivi</h3>
+              <p class="text-gray-600 text-sm">
+                Accompagnement dans le déploiement des mesures, formation des équipes,
+                vérifications régulières et ajustements selon l’évolution des menaces.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pourquoi IT STRATEGIX -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-5xl text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+          Pourquoi confier votre cybersécurité à IT STRATEGIX ?
+        </h2>
+        <p class="text-gray-600 mb-10 max-w-3xl mx-auto">
+          Nous combinons expertise technique, pédagogie et connaissance du terrain burkinabè
+          pour mettre en place une sécurité accessible, efficace et durable.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Proximité terrain</h3>
+            <p class="text-gray-600 text-sm">
+              Une équipe locale, capable d’intervenir dans vos locaux ou à distance selon vos besoins.
+            </p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Pragmatisme</h3>
+            <p class="text-gray-600 text-sm">
+              Des solutions adaptées à vos moyens, sans surdimensionner les outils ni les budgets.
+            </p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-2xl shadow-sm hover:shadow-md transition">
+            <h3 class="text-lg font-semibold text-secondary mb-2">Culture de la sensibilisation</h3>
+            <p class="text-gray-600 text-sm">
+              Un fort accent mis sur la formation des utilisateurs, maillon clé de la sécurité.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="../index.html#contact"
+             class="inline-flex items-center justify-center bg-primary text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-opacity-90 transition">
+            Renforcer votre sécurité numérique
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-primary text-white py-8 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
+
 
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

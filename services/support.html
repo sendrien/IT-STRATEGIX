@@ -19,7 +19,8 @@
           colors: {
             primary: '#00007E',
             accent: '#F59E0B',
-            secondary: '#1E3A8A'
+            secondary: '#1E3A8A',
+            texte: '#010221'
           }
         }
       }
@@ -29,147 +30,322 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
   </style>
 </head>
 
-<body class="bg-white text-primary leading-relaxed">
+<body class="bg-white text-texte leading-relaxed">
 
   <!-- Header -->
-    <header class="bg-white shadow fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center px-4 py-4">
-            <!-- Logo -->
-            <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
-            
-            <!-- Menu Desktop -->
-            <nav class="space-x-6 hidden md:flex items-center">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
+  <header class="bg-white/95 backdrop-blur shadow fixed top-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-4">
+      <!-- Logo -->
+      <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-80 transition">
+        IT STRATEGIX
+      </a>
+      
+      <!-- Menu Desktop -->
+      <nav class="space-x-6 hidden md:flex items-center text-sm">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
 
-            <!-- Burger button (mobile) -->
-            <button id="burger" class="md:hidden focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            </button>
-        </div>
+      <!-- Burger button (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
-            <nav class="flex flex-col space-y-4 p-4">
-            <a href="../index.html#services" class="hover:text-primary transition">Services</a>
-            <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
-            <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
-            <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-            <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
-                Demander un devis
-            </a>
-            </nav>
-        </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
+      <nav class="flex flex-col space-y-4 p-4 text-sm">
+        <a href="../index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
+        <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-center text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
+    </div>
 
-        <!-- Script pour toggle mobile -->
-        <script>
-            const burger = document.getElementById('burger');
-            const mobileMenu = document.getElementById('mobileMenu');
+    <!-- Script pour toggle mobile -->
+    <script>
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
 
-            burger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            });
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
 
-            document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-            });
-        </script>
-    </header>
+      document.addEventListener('click', (e) => {
+        if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </header>
 
   <main class="pt-24">
-    <!-- Titre -->
-    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Support Informatique</h1>
-        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+    <!-- HERO clair & moderne -->
+    <section class="py-16 md:py-20 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Texte -->
+        <div>
+          <p class="text-xs tracking-[0.25em] uppercase text-primary/60 mb-3">
+            Service · Support & assistance informatique
+          </p>
+          <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Support informatique & helpdesk de proximité
+          </h1>
+          <p class="text-sm md:text-base text-gray-700 mb-6 max-w-xl">
+            IT STRATEGIX vous accompagne au quotidien pour résoudre vos problèmes
+            informatiques, guider vos utilisateurs et garantir la continuité de vos activités,
+            à distance comme sur site.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-7 text-xs">
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Support bureautique & messagerie
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Réseau & postes de travail
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Helpdesk multicanal
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="../index.html#contact"
+               class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-secondary transition">
+              Contacter le support
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500">
+              Intervention à Ouagadougou, Bobo-Dioulasso et dans les régions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte visuelle -->
+        <div class="max-w-md w-full mx-auto">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6">
+            <div class="relative rounded-2xl overflow-hidden mb-4">
+              <img
+                src="../images/support tech.jpg"
+                alt="Support Informatique"
+                class="w-full h-52 md:h-64 object-cover"
+              />
+              <div class="absolute bottom-3 left-3 bg-black/60 text-white text-[11px] px-3 py-1 rounded-full">
+                6j/7 · À distance & sur site
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-[11px] text-gray-600">
+              <div>
+                <p class="font-semibold text-primary">Assistance utilisateurs</p>
+                <p>Prise en main à distance, guidage et conseils.</p>
+              </div>
+              <div>
+                <p class="font-semibold text-primary">Problèmes résolus</p>
+                <p>Diagnostic rapide et suivi des tickets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contenu -->
-    <section class="py-24 bg-gray-50 space-y-24">
-      <!-- Bloc 1 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+    <!-- SECTION : Assistance technique -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Texte -->
         <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Assistance technique rapide et efficace</h2>
-          <p class="text-gray-700 mb-4">
-            IT STRATEGIX vous offre un support réactif pour maintenir la continuité de vos activités : interventions sur site, assistance à distance, diagnostic et résolution de pannes.
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+            Assistance technique rapide et efficace
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-4">
+            Nous intervenons sur vos outils du quotidien pour limiter les interruptions
+            de service : bureautique, messagerie, accès réseau, imprimantes et postes
+            de travail.
           </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Support bureautique (Word, Excel, messagerie...)</li>
-            <li>Assistance réseau, imprimantes, postes de travail</li>
-            <li>Maintenance préventive et corrective</li>
-            <li>Intervention rapide à Ouagadougou et dans les régions</li>
-            <li>Service Helpdesk multicanal (téléphone, mail, WhatsApp)</li>
-          </ul>
-        </div>
-        <img src="../images/support tech.jpg" alt="Support Informatique" class="rounded-xl shadow-lg" />
-      </div>
 
-      <!-- Bloc 2 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <img src="../images/service tech.jpg" alt="Intervention locale" class="rounded-xl shadow-lg order-2 md:order-1" />
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Support adapté au contexte burkinabè</h2>
-          <p class="text-gray-700 mb-4">
-            Notre équipe locale vous accompagne avec des solutions concrètes, même en zone à faible connectivité. Nos techniciens sont formés pour répondre aux besoins des TPE, PME et institutions.
+          <div class="grid gap-4 text-sm">
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <p class="font-semibold text-primary mb-1">Support bureautique & logiciel</p>
+              <ul class="list-disc list-inside text-gray-700 text-xs md:text-sm space-y-1">
+                <li>Word, Excel, PowerPoint, messageries, navigateurs…</li>
+                <li>Configuration, dépannage et bonnes pratiques.</li>
+                <li>Accompagnement individuel ou par équipe.</li>
+              </ul>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <p class="font-semibold text-primary mb-1">Infrastructure & postes de travail</p>
+              <ul class="list-disc list-inside text-gray-700 text-xs md:text-sm space-y-1">
+                <li>Assistance réseau, imprimantes et postes de travail.</li>
+                <li>Maintenance préventive et corrective.</li>
+                <li>Service helpdesk multicanal (téléphone, mail, WhatsApp).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="max-w-md mx-auto">
+          <img
+            src="../images/service tech.jpg"
+            alt="Intervention locale"
+            class="w-full h-64 md:h-72 rounded-3xl object-cover shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : Contexte Burkina Faso -->
+    <section class="py-16 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Image -->
+        <div class="order-2 md:order-1">
+          <img
+            src="../images/support tech.jpg"
+            alt="Support en contexte local"
+            class="w-full h-64 md:h-72 rounded-3xl object-cover shadow-lg"
+          />
+        </div>
+
+        <!-- Texte -->
+        <div class="order-1 md:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+            Un support adapté au contexte burkinabè
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-4">
+            Même en zone à faible connectivité, notre équipe trouve des solutions pour
+            suivre vos demandes, intervenir et documenter chaque action. Nous travaillons
+            au plus près des réalités des TPE, PME et institutions.
           </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Support même sans accès Internet permanent</li>
-            <li>Intervention planifiée ou en urgence</li>
-            <li>Documentation et formation utilisateur à l’issue</li>
-            <li>Suivi de tickets et rapports d’intervention</li>
+          <ul class="list-disc list-inside text-sm md:text-base text-gray-700 space-y-1.5 mb-4">
+            <li>Support possible même sans accès Internet permanent.</li>
+            <li>Interventions planifiées ou en urgence.</li>
+            <li>Documentation et formation utilisateur à l’issue.</li>
+            <li>Suivi de tickets et rapports d’intervention.</li>
           </ul>
+
+          <div class="flex flex-wrap gap-2 text-[11px] text-gray-600">
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Proximité terrain
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Solutions concrètes
+            </span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Avantages -->
-      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi faire appel à notre support ?</h2>
-        <p class="text-gray-700 mb-8">
-          Parce que nous garantissons une réactivité, une proximité et une qualité de service à la hauteur de vos enjeux informatiques.
+    <!-- SECTION : Avantages -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-4xl text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+          Pourquoi faire appel à notre support ?
+        </h2>
+        <p class="text-sm md:text-base text-gray-700">
+          Nous combinons réactivité, proximité et qualité de service pour sécuriser
+          votre quotidien informatique et celui de vos équipes.
         </p>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-            <h3 class="text-xl font-semibold text-accent mb-2">Disponibilité</h3>
-            <p class="text-gray-600 text-sm">Support rapide 6j/7, sur site ou à distance.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-            <h3 class="text-xl font-semibold text-accent mb-2">Compétence</h3>
-            <p class="text-gray-600 text-sm">Techniciens qualifiés, diagnostics précis, résolution efficace.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
-            <h3 class="text-xl font-semibold text-accent mb-2">Suivi</h3>
-            <p class="text-gray-600 text-sm">Rapports d’intervention clairs et archivage des tickets.</p>
-          </div>
-        </div>
       </div>
 
-      <!-- CTA -->
-      <div class="text-center" data-aos="fade-up">
-        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
-          Contactez notre équipe de support
-        </a>
+      <div class="container mx-auto px-4 max-w-5xl grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Disponibilité</h3>
+          <p class="text-gray-600 text-sm">
+            Support rapide 6j/7, sur site ou à distance, selon l’urgence de la situation.
+          </p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Compétence</h3>
+          <p class="text-gray-600 text-sm">
+            Techniciens qualifiés, diagnostics précis et résolution efficace des pannes.
+          </p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/25 transition">
+          <h3 class="text-lg md:text-xl font-semibold text-accent mb-2">Suivi structuré</h3>
+          <p class="text-gray-600 text-sm">
+            Rapports d’intervention clairs, archivage des tickets et visibilité sur l’historique.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA finale -->
+    <section class="py-16 bg-gray-50/80" data-aos="fade-up">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-white border border-gray-100 rounded-3xl shadow-sm px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-2">
+              Un problème technique ou besoin d’accompagnement&nbsp;?
+            </h2>
+            <p class="text-sm md:text-base text-gray-700 max-w-xl">
+              Expliquez-nous votre situation (type de panne, nombre d’utilisateurs impactés,
+              environnement) et nous mettrons en place un support adapté à vos enjeux.
+            </p>
+          </div>
+          <div class="flex flex-col items-stretch gap-3 text-sm w-full md:w-auto">
+            <a href="../index.html#contact"
+               class="inline-flex justify-center items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transition">
+              Contactez notre équipe de support
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500 text-center md:text-right">
+              Ou contactez-nous au <span class="font-semibold">+226 70 56 79 89</span>.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-white py-8 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+  <!-- Footer identique à l'accueil, avec drapeau 🇧🇫 -->
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
 

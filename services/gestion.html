@@ -9,9 +9,8 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind & AOS -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <script>
     tailwind.config = {
       theme: {
@@ -19,7 +18,8 @@
           colors: {
             primary: '#00007E',
             accent: '#F59E0B',
-            secondary: '#1E3A8A'
+            secondary: '#1E3A8A',
+            texte: '#010221'
           }
         }
       }
@@ -29,154 +29,347 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
+
+    /* Dégradé identique à la page d'accueil */
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
   </style>
 </head>
 
-<body class="bg-white text-primary leading-relaxed">
+<body class="bg-white text-texte leading-relaxed">
 
   <!-- Header -->
-  <header class="bg-white shadow fixed top-0 w-full z-50">
+  <header class="bg-white/95 backdrop-blur shadow fixed top-0 w-full z-50">
     <div class="container mx-auto flex justify-between items-center px-4 py-4">
-        <!-- Logo -->
-        <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-75 transition">IT STRATEGIX</a>
-        
-        <!-- Menu Desktop -->
-        <nav class="space-x-6 hidden md:flex items-center">
+      <!-- Logo -->
+      <a href="../index.html" class="text-xl font-bold text-primary hover:opacity-80 transition">
+        IT STRATEGIX
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="space-x-6 hidden md:flex items-center text-sm">
         <a href="../index.html#services" class="hover:text-primary transition">Services</a>
         <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
         <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
         <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
-            Demander un devis
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
         </a>
-        </nav>
+      </nav>
 
-        <!-- Burger button (mobile) -->
-        <button id="burger" class="md:hidden focus:outline-none">
+      <!-- Burger (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        </button>
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg z-40">
-        <nav class="flex flex-col space-y-4 p-4">
+    <!-- Menu mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg">
+      <nav class="flex flex-col space-y-4 p-4 text-sm">
         <a href="../index.html#services" class="hover:text-primary transition">Services</a>
         <a href="../index.html#about" class="hover:text-primary transition">À propos</a>
         <a href="../index.html#portfolio" class="hover:text-primary transition">Réalisations</a>
         <a href="../index.html#contact" class="hover:text-primary transition">Contact</a>
-        <a href="../index.html#contact" class="bg-accent text-white px-4 py-2 rounded-full text-sm text-center hover:scale-105 transition">
-            Demander un devis
+        <a href="../index.html#contact"
+           class="bg-accent text-white px-4 py-2 rounded-full text-center text-xs font-semibold hover:scale-105 transition">
+          Demander un devis
         </a>
-        </nav>
+      </nav>
     </div>
 
-    <!-- Script pour toggle mobile -->
     <script>
-        const burger = document.getElementById('burger');
-        const mobileMenu = document.getElementById('mobileMenu');
+      const burger = document.getElementById('burger');
+      const mobileMenu = document.getElementById('mobileMenu');
 
-        burger.addEventListener('click', () => {
+      burger.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-        });
+      });
 
-        document.addEventListener('click', (e) => {
+      document.addEventListener('click', (e) => {
         if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-            mobileMenu.classList.add('hidden');
+          mobileMenu.classList.add('hidden');
         }
-        });
+      });
     </script>
-    </header>
+  </header>
 
   <main class="pt-24">
-    <!-- Titre -->
-    <section class="bg-primary text-white pt-12 md:pt-20 pb-20" data-aos="fade-up">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Gestion & Installation Caméras</h1>
-        <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+
+    <!-- HERO clair et moderne -->
+    <section class="py-16 md:py-20 bg-gray-50/80">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <!-- Texte -->
+        <div>
+          <p class="text-xs tracking-[0.25em] uppercase text-primary/60 mb-3">
+            Service · Sécurité & vidéosurveillance
+          </p>
+          <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Gestion & installation de caméras de sécurité
+          </h1>
+          <p class="text-sm md:text-base text-gray-700 mb-6 max-w-xl">
+            Protégez vos bureaux, magasins, entrepôts ou habitations avec des systèmes
+            de vidéosurveillance fiables, discrets et accessibles à distance, adaptés
+            au contexte du Burkina Faso.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-7 text-xs">
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Audit sur site
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Installation clé en main
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-gray-200">
+              Supervision & maintenance
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="../index.html#contact"
+               class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-secondary transition">
+              Parler à un expert sécurité
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500">
+              Intervention à Ouagadougou, Bobo-Dioulasso et dans les régions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Carte visuelle -->
+        <div class="max-w-md w-full mx-auto">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6">
+            <div class="relative rounded-2xl overflow-hidden mb-4">
+              <img
+                src="../images/camera.jpg"
+                alt="Caméra de surveillance"
+                class="w-full h-52 md:h-64 object-cover"
+              />
+              <div class="absolute bottom-3 left-3 bg-black/55 text-white text-[11px] px-3 py-1 rounded-full">
+                24h/24 · Vision nocturne · Alertes
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-gray-600">
+              <div>
+                <p class="font-semibold text-primary">Surveillance en temps réel</p>
+                <p>Application mobile, tablette & PC.</p>
+              </div>
+              <div class="text-right">
+                <p class="font-semibold text-primary">Stockage sécurisé</p>
+                <p>Local, NAS ou cloud chiffré.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contenu -->
-    <section class="py-24 bg-gray-50 space-y-24">
-      <!-- Bloc 1 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Surveillez vos espaces, en toute sécurité</h2>
-          <p class="text-gray-700 mb-4">
-            Que vous soyez une entreprise, une administration ou un particulier, nous installons et configurons des systèmes de vidéosurveillance adaptés à vos besoins et à votre budget.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Caméras intérieures et extérieures</li>
-            <li>Vision nocturne, détection de mouvement</li>
-            <li>Enregistrement sur disque dur ou cloud</li>
-            <li>Accès à distance via smartphone</li>
-            <li>Installation professionnelle et discrète</li>
-          </ul>
-        </div>
-        <img src="../images/camera.jpg" alt="Caméra de surveillance" class="rounded-xl shadow-lg" />
-      </div>
-
-      <!-- Bloc 2 -->
-      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-        <img src="../images/surveillance.jpg" alt="Surveillance" class="rounded-xl shadow-lg order-2 md:order-1" />
-        <div>
-          <h2 class="text-3xl font-bold mb-4 text-secondary">Une solution fiable pour le Burkina Faso</h2>
-          <p class="text-gray-700 mb-4">
-            Nos systèmes sont conçus pour fonctionner même dans des environnements complexes (coupures de courant, chaleur, poussière) et permettent une surveillance continue de vos locaux.
-          </p>
-          <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Systèmes alimentés par onduleur ou panneaux solaires</li>
-            <li>Assistance à distance et maintenance régulière</li>
-            <li>Matériel testé et approuvé en conditions locales</li>
-            <li>Formations pour une utilisation autonome</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bloc Avantages -->
-      <div class="container mx-auto px-4 text-center max-w-4xl" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6 text-secondary">Pourquoi nous confier votre sécurité ?</h2>
-        <p class="text-gray-700 mb-8">
-          IT STRATEGIX vous accompagne dans la sécurisation de vos biens grâce à des systèmes robustes, évolutifs et faciles à prendre en main.
-        </p>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="100">
-            <h3 class="text-xl font-semibold text-accent mb-2">Analyse de vos besoins</h3>
-            <p class="text-gray-600 text-sm">Audit technique préalable pour proposer un système adapté.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="200">
-            <h3 class="text-xl font-semibold text-accent mb-2">Technologie fiable</h3>
-            <p class="text-gray-600 text-sm">Équipements résistants et connectés, testés localement.</p>
-          </div>
-          <div class="p-6 bg-white rounded-2xl shadow hover:shadow-xl transition" data-aos="zoom-in" data-aos-delay="300">
-            <h3 class="text-xl font-semibold text-accent mb-2">Service complet</h3>
-            <p class="text-gray-600 text-sm">Installation, configuration, suivi et maintenance.</p>
+    <!-- SECTION : Ce que nous installons -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-2">
+              Des solutions complètes pour vos espaces
+            </h2>
+            <p class="text-sm md:text-base text-gray-700 max-w-xl">
+              Nous sélectionnons et configurons le matériel le plus adapté à votre environnement&nbsp;:
+              intérieur, extérieur, zones à risque, parkings, entrepôts, logements…
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- CTA -->
-      <div class="text-center" data-aos="fade-up">
-        <a href="../index.html#contact" class="bg-accent text-white font-semibold px-8 py-4 rounded-full hover:scale-105 transition">
-          Demandez un devis sécurité
-        </a>
+        <div class="grid gap-6 md:grid-cols-3 text-sm">
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-primary/30 hover:shadow-md transition">
+            <h3 class="font-semibold text-primary mb-2">Caméras & capteurs</h3>
+            <p class="text-gray-700 mb-3">
+              Caméras fixes ou motorisées (PTZ), vision nocturne, détection de mouvement,
+              micro intégré si besoin.
+            </p>
+            <ul class="space-y-1 text-gray-600 text-xs">
+              <li>• Intérieur & extérieur</li>
+              <li>• Résolution HD / Full HD / 4K</li>
+              <li>• Protection anti-intempéries</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-primary/30 hover:shadow-md transition">
+            <h3 class="font-semibold text-primary mb-2">Enregistrement & stockage</h3>
+            <p class="text-gray-700 mb-3">
+              Enregistreurs (NVR/DVR), disques durs dédiés, sauvegardes planifiées
+              et accès sécurisé.
+            </p>
+            <ul class="space-y-1 text-gray-600 text-xs">
+              <li>• Historique des vidéos</li>
+              <li>• Recherche par date & événement</li>
+              <li>• Possibilité de stockage cloud</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-primary/30 hover:shadow-md transition">
+            <h3 class="font-semibold text-primary mb-2">Accès à distance</h3>
+            <p class="text-gray-700 mb-3">
+              Consultation en direct, notifications d’alertes et partage limité
+              avec vos équipes.
+            </p>
+            <ul class="space-y-1 text-gray-600 text-xs">
+              <li>• Application mobile dédiée</li>
+              <li>• Comptes utilisateurs sécurisés</li>
+              <li>• Journalisation des accès</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- SECTION : Adapté au Burkina Faso -->
+    <section class="py-16 bg-gray-50/80">
+      <div class="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <img
+            src="../images/surveillance.jpg"
+            alt="Surveillance et contrôle"
+            class="w-full h-64 md:h-72 rounded-3xl object-cover shadow-lg"
+          />
+        </div>
+        <div class="order-1 md:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
+            Une solution pensée pour le Burkina Faso
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-4">
+            Nous tenons compte des coupures de courant, de la chaleur, de la poussière
+            et de la connectivité parfois limitée. Le matériel est choisi et configuré
+            pour rester fiable dans ces conditions.
+          </p>
+          <ul class="list-disc list-inside text-sm md:text-base text-gray-700 space-y-1.5">
+            <li>Systèmes alimentés par onduleur ou panneaux solaires.</li>
+            <li>Accès local possible même sans Internet stable.</li>
+            <li>Matériel robuste, testé sur le terrain au Burkina.</li>
+            <li>Formations pour rendre vos équipes autonomes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : Processus -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl space-y-10">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-3">
+            Comment se déroule une installation&nbsp;?
+          </h2>
+          <p class="text-sm md:text-base text-gray-700">
+            Un processus transparent, de la première visite jusqu’au suivi de la solution,
+            pour que vous sachiez exactement ce qui est mis en place.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6 text-sm">
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 flex flex-col">
+            <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-semibold mb-3">
+              1
+            </span>
+            <h3 class="font-semibold text-primary mb-2">Audit sur site</h3>
+            <p class="text-gray-700">
+              Repérage des zones sensibles, des accès et des contraintes techniques.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 flex flex-col">
+            <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-semibold mb-3">
+              2
+            </span>
+            <h3 class="font-semibold text-primary mb-2">Proposition chiffrée</h3>
+            <p class="text-gray-700">
+              Scénarios de couverture, choix des caméras et devis détaillé.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 flex flex-col">
+            <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-semibold mb-3">
+              3
+            </span>
+            <h3 class="font-semibold text-primary mb-2">Installation & tests</h3>
+            <p class="text-gray-700">
+              Pose, câblage, configuration, tests d’images et d’alertes.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 flex flex-col">
+            <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-semibold mb-3">
+              4
+            </span>
+            <h3 class="font-semibold text-primary mb-2">Formation & maintenance</h3>
+            <p class="text-gray-700">
+              Prise en main par vos équipes et contrat de maintenance si souhaité.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA finale -->
+    <section class="py-16 bg-gray-50/80">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-white border border-gray-100 rounded-3xl shadow-sm px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-2">
+              Besoin de sécuriser vos locaux&nbsp;?
+            </h2>
+            <p class="text-sm md:text-base text-gray-700 max-w-xl">
+              Racontez-nous votre contexte (type de site, zones à surveiller, budget) et nous
+              revenons vers vous avec une proposition claire et adaptée.
+            </p>
+          </div>
+          <div class="flex flex-col items-stretch gap-3 text-sm w-full md:w-auto">
+            <a href="../index.html#contact"
+               class="inline-flex justify-center items-center gap-2 bg-accent text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transition">
+              Demander un devis sécurité
+              <span aria-hidden="true">↗</span>
+            </a>
+            <p class="text-xs text-gray-500 text-center md:text-right">
+              Ou appelez-nous au <span class="font-semibold">+226 70 56 79 89</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-white py-8 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 IT STRATEGIX. Tous droits réservés.</p>
+  <!-- Footer identique à la page d'accueil -->
+  <footer class="bg-it-gradient text-white mt-16">
+    <div
+      class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm"
+    >
+      <!-- Partie gauche -->
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+
+      <!-- Partie droite -->
+      <div
+        class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90"
+      >
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+
+        <!-- Drapeau Burkina Faso -->
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
     </div>
   </footer>
 
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ once: true, duration: 800 });
-  </script>
 </body>
 </html>

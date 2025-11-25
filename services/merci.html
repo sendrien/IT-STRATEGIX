@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merci pour votre message | IT STRATEGIX</title>
+  <link href="logo.png" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00007E',
+            accent: '#F59E0B',
+            texte: '#010221'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .bg-it-gradient {
+      background: linear-gradient(135deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
+
+    @keyframes fade-up {
+      0% { opacity: 0; transform: translateY(24px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .animate-fade-up {
+      animation: fade-up 0.7s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-it-gradient min-h-screen flex items-center justify-center px-4 text-texte">
+
+  <!-- Décor flou en arrière-plan -->
+  <div class="absolute inset-0 pointer-events-none opacity-40">
+    <div class="absolute -top-10 -left-16 w-48 h-48 bg-accent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Carte principale -->
+  <div class="relative bg-white/95 backdrop-blur-sm shadow-2xl rounded-3xl p-8 md:p-10 max-w-xl w-full animate-fade-up border border-white/60">
+    <!-- Logo -->
+    <div class="flex justify-center mb-5">
+      <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-[11px] text-gray-600">
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+        <span>Message envoyé à IT STRATEGIX</span>
+      </div>
+    </div>
+
+    <!-- Icône -->
+    <div class="mb-6 flex justify-center">
+      <div class="relative">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-green-50 flex items-center justify-center border border-green-100 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2l4 -4m5 2a9 9 0 11-18 0a9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <span class="absolute -bottom-1 -right-1 text-[11px] px-2 py-0.5 rounded-full bg-primary text-white">
+          Merci
+        </span>
+      </div>
+    </div>
+
+    <!-- Texte -->
+    <h1 class="text-2xl md:text-3xl font-bold text-primary text-center mb-3">
+      Merci pour votre message
+    </h1>
+    <p class="text-sm md:text-base text-gray-700 text-center mb-6">
+      Nous avons bien reçu votre demande. Notre équipe vous répondra
+      dans les plus brefs délais.
+    </p>
+
+    <div class="bg-gray-50 rounded-2xl px-4 py-3 mb-6 text-xs md:text-sm text-gray-700 border border-gray-100">
+      <p class="font-semibold text-texte mb-1">Besoin d’une réponse rapide&nbsp;?</p>
+      <p>
+        Vous pouvez aussi nous joindre directement au&nbsp;:
+        <br />
+        <span class="font-semibold">+226 70 56 79 89</span> ou
+        <span class="font-semibold">+226 70 10 21 93</span>
+      </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-3">
+      <a href="../index.html"
+         class="w-full md:w-auto inline-flex justify-center items-center gap-2 bg-primary text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-secondary transition">
+        Retour à l’accueil
+      </a>
+      <a href="../index.html#contact"
+         class="w-full md:w-auto inline-flex justify-center items-center gap-2 text-primary text-sm font-semibold px-4 py-2 rounded-full hover:bg-gray-100 transition">
+        Envoyer un autre message
+      </a>
+    </div>
+  </div>
+</body>
+</html>
