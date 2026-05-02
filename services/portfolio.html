@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | IT STRATEGIX</title>
+
+  <!-- Favicon -->
+  <link href="logo.png" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00007E',
+            accent: '#F59E0B',
+            titre: '#A52502',
+            texte: '#010221'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .bg-it-gradient {
+      background: linear-gradient(90deg, #000105 0%, #05006B 40%, #312EB0 100%);
+    }
+
+    /* Placeholder coloré pour les projets sans image */
+    .project-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+    }
+    .cat-web { background-color: #3B82F6; } /* blue */
+    .cat-qa { background-color: #F59E0B; } /* accent */
+    .cat-cloud { background-color: #14B8A6; } /* teal */
+    .cat-conseil { background-color: #8B5CF6; } /* violet */
+
+    /* Modale */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="text-primary bg-white leading-relaxed">
+
+  <!-- Header / Navigation (identique à index.html mais liens vers index.html) -->
+  <header class="fixed w-full z-50 bg-white/80 backdrop-blur shadow-sm">
+    <div class="container mx-auto flex justify-between items-center py-3 px-4">
+      <!-- Logo / Brand -->
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-xl bg-it-gradient flex items-center justify-center text-white font-bold text-lg shadow-md">
+          IT
+        </span>
+        <span class="text-lg md:text-xl font-semibold text-primary tracking-wide">
+          IT STRATEGIX
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="index.html#services" class="hover:text-primary/80 transition">Services</a>
+        <a href="index.html#about" class="hover:text-primary/80 transition">À propos</a>
+        <a href="portfolio.html" class="text-accent font-semibold transition">Portfolio</a>
+        <a href="index.html#contact" class="hover:text-primary/80 transition">Contact</a>
+        <a href="index.html#contact"
+           class="ml-4 bg-accent text-white px-4 py-2 rounded-full font-semibold text-xs uppercase tracking-wide hover:scale-105 transition transform shadow-sm">
+          Demander un devis
+        </a>
+      </nav>
+
+      <!-- Burger (mobile) -->
+      <button id="burger" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t">
+      <nav class="flex flex-col space-y-3 p-4 text-sm">
+        <a href="index.html#services" class="hover:text-primary transition">Services</a>
+        <a href="index.html#about" class="hover:text-primary transition">À propos</a>
+        <a href="portfolio.html" class="text-accent font-semibold">Portfolio</a>
+        <a href="index.html#contact" class="hover:text-primary transition">Contact</a>
+        <a href="index.html#contact"
+           class="mt-2 bg-accent text-white px-4 py-2 rounded-full text-center font-semibold text-xs uppercase tracking-wide hover:scale-105 transition">
+          Demander un devis
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="pt-20">
+    <!-- Hero section -->
+    <section class="bg-it-gradient text-white relative overflow-hidden">
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-accent/40 rounded-full blob"></div>
+      <div class="absolute bottom-0 -right-10 w-48 h-48 bg-white/20 rounded-full blob"></div>
+      <div class="container mx-auto px-4 py-16 md:py-20 relative text-center">
+        <p class="uppercase tracking-[0.2em] text-xs mb-3 text-white/60">Nos réalisations</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Notre Portfolio</h1>
+        <p class="text-base md:text-lg max-w-2xl mx-auto text-white/80">
+          Projets menés en propre ou dans le cadre de missions de consulting par nos fondateurs. 
+          Chaque réalisation illustre notre savoir‑faire en développement, QA, cloud et conseil IT.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filtres -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4 flex flex-wrap justify-center gap-3">
+        <button class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold" data-filter="all">Tous</button>
+        <button class="filter-btn bg-white text-primary border border-primary px-5 py-2 rounded-full text-sm font-semibold" data-filter="web">Web / Mobile</button>
+        <button class="filter-btn bg-white text-primary border border-primary px-5 py-2 rounded-full text-sm font-semibold" data-filter="qa">QA & Automatisation</button>
+        <button class="filter-btn bg-white text-primary border border-primary px-5 py-2 rounded-full text-sm font-semibold" data-filter="cloud">Cloud & Systèmes</button>
+        <button class="filter-btn bg-white text-primary border border-primary px-5 py-2 rounded-full text-sm font-semibold" data-filter="conseil">Conseil & Audit</button>
+      </div>
+    </section>
+
+    <!-- Grille de projets -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div id="projects-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Les cartes sont injectées par JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content bg-white rounded-2xl shadow-2xl p-6 md:p-8 relative mx-4">
+      <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-client" class="text-sm text-gray-500 mb-4"></p>
+      <div id="modal-body" class="text-sm text-gray-700 space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-it-gradient text-white mt-8">
+    <div class="container mx-auto px-4 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm">
+      <p class="text-center md:text-left">
+        &copy; 2025 IT STRATEGIX
+        <small class="align-top text-[0.65rem]">(SARL)</small>.
+        Tous droits réservés.
+      </p>
+      <div class="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-3 opacity-90">
+        <span>Solutions numériques</span>
+        <span class="hidden sm:inline">· Développement</span>
+        <span class="hidden sm:inline">· Cloud</span>
+        <span class="hidden sm:inline">· Cybersécurité</span>
+        <span class="hidden sm:inline">· Conseil IT</span>
+        <span class="w-px h-4 bg-white/30 hidden md:inline-block"></span>
+        <span class="flex items-center gap-1">
+          <span class="text-lg leading-none">🇧🇫</span>
+          <span class="hidden sm:inline">Burkina Faso</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+
+    // Mobile menu toggle (identique à index.html)
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // ---------- Données des projets ----------
+    const projects = [
+      {
+        id: 1,
+        title: "Application immobilière Immo",
+        category: ["web"],
+        client: "Projet personnel (2024–2025)",
+        img: "./vision.png",
+        description: "Application mobile complète pour la gestion, location et vente de biens immobiliers au Burkina Faso.",
+        tasks: [
+          "Développement mobile avec Flutter et API PHP/MySQL",
+          "Gestion d'annonces, messagerie temps réel, notifications",
+          "Prise de rendez‑vous et demandes de visite",
+          "Génération automatique de reçus PDF avec QR code",
+          "Sécurité : authentification, droits d'accès, validation des entrées"
+        ],
+        tools: ["Flutter", "Dart", "PHP", "MySQL", "Android Studio", "Postman"]
+      },
+      {
+        id: 2,
+        title: "Plateforme e‑commerce Brosboutik",
+        category: ["web"],
+        client: "Projet personnel (2022–2024)",
+        img: "./logo_blanc.png",
+        description: "Application web et mobile multi‑boutiques dédiée aux commerçants et clients du Burkina Faso.",
+        tasks: [
+          "Backend Django (Python) et base de données MySQL",
+          "Architecture multi‑boutiques avec panier intelligent",
+          "Intégration de paiements mobiles locaux (Orange Money, Moov Money)",
+          "Factures PDF avec QR code, notifications et messagerie instantanée",
+          "Déploiement sur serveur Raspberry Pi avec certificat SSL"
+        ],
+        tools: ["Django", "Python", "MySQL", "Git", "Raspberry Pi", "Ubuntu"]
+      },
+      {
+        id: 3,
+        title: "Formulaire mobile pour agents de terrain",
+        category: ["web"],
+        client: "Communauté Urbaine Grand Poitiers (2019)",
+        img: null,
+        description: "Application web responsive permettant aux agents de saisir des demandes d’intervention depuis le terrain.",
+        tasks: [
+          "Rédaction du cahier des charges avec le client",
+          "Développement PHP / Bootstrap 4 / PostgreSQL",
+          "Mise en place d’un webservice REST",
+          "Présentations régulières aux utilisateurs finaux"
+        ],
+        tools: ["PHP7", "Bootstrap 4", "PostgreSQL", "JQuery", "Git"]
+      },
+      {
+        id: 4,
+        title: "Prévisions météo par chaîne de Markov",
+        category: ["web", "conseil"],
+        client: "Projet 3iL Limoges (2019–2020)",
+        img: null,
+        description: "Application desktop de calcul de prévisions météorologiques à partir des données d’une station locale.",
+        tasks: [
+          "Transfert de données entre bases SQL Server et MySQL",
+          "Traitement d’images du ciel (pixellisation, détection de couleur)",
+          "Implémentation d’une chaîne de Markov pour les probabilités",
+          "Interface graphique sous Qt‑Designer"
+        ],
+        tools: ["Python3.7", "PyQt", "SQL Server", "MySQL", "Anaconda"]
+      },
+      {
+        id: 5,
+        title: "Tests & automatisation Orange Business Lounge",
+        category: ["qa"],
+        client: "Orange Business Service (2023–2025)",
+        img: null,
+        description: "Assurance qualité et automatisation des tests pour l’application web et mobile de vente de data.",
+        tasks: [
+          "Tests manuels sur iOS, Android et Web",
+          "Maintenance et refonte du framework de tests automatisés",
+          "Création de plans de tests et exécution via Azure DevOps",
+          "Reporting des résultats aux équipes"
+        ],
+        tools: ["Python", "Robot Framework", "Jira", "Confluence", "Azure DevOps"]
+      },
+      {
+        id: 6,
+        title: "Automatisation des tests Koralplay",
+        category: ["qa"],
+        client: "KORALPLAY (2022–2023)",
+        img: null,
+        description: "Tests fonctionnels, de performance et automatisation pour un éditeur de jeux et paris sportifs.",
+        tasks: [
+          "Rédaction de spécifications de tests détaillées",
+          "Automatisation avec Robot Framework et MySQL/MongoDB",
+          "Tests de performance avec K6, analyse des résultats",
+          "Collaboration avec l’équipe QA et les développeurs"
+        ],
+        tools: ["Python", "Robot Framework", "MySQL", "MongoDB", "K6", "Jira"]
+      },
+      {
+        id: 7,
+        title: "Refonte & automatisation Groupe Créative",
+        category: ["qa"],
+        client: "Groupe Créative (2022)",
+        img: null,
+        description: "Reprise et modernisation du projet d’automatisation de tests pour l’application CSE.",
+        tasks: [
+          "État des lieux et proposition de refonte technique",
+          "Installation de l’environnement Python / Robot Framework",
+          "Correction et enrichissement des tests automatisés",
+          "Démonstrations en fin de sprint"
+        ],
+        tools: ["Python3.7", "Robot Framework", "PostgreSQL", "Jira", "Scrum"]
+      },
+      {
+        id: 8,
+        title: "Automatisation des processus bancaires AGIR ARCO",
+        category: ["qa", "conseil"],
+        client: "AGIR ARCO (2021)",
+        img: null,
+        description: "Développement de modules Python pour le contrôle de fichiers SEPA, l’exécution automatique de requêtes SQL et l’orchestration de tests API.",
+        tasks: [
+          "Module de comparaison de fichiers XML et txt",
+          "Module d’exécution de requêtes SQL",
+          "Automatisation des tests SOAPUI",
+          "IHM avec Qt‑Designer et scripts batch"
+        ],
+        tools: ["Python3.8", "PostgreSQL", "Qt Designer", "z/OS", "SOAPUI"]
+      },
+      {
+        id: 9,
+        title: "Automatisation des tests Orange Grenoble",
+        category: ["qa"],
+        client: "Orange Grenoble (2020)",
+        img: null,
+        description: "Stage d’automatisation des tests fonctionnels et d’intégration pour l’application OPTIMUM (déploiement fibre).",
+        tasks: [
+          "Maintenance et enrichissement des tests Robot Framework",
+          "Développement de scripts Python de traitement de données",
+          "Optimisation du temps d’exécution des tests",
+          "Automatisation du lancement via Jenkins après MEP",
+          "Formation de l’équipe MOE aux outils"
+        ],
+        tools: ["Python3.7", "Robot Framework", "Selenium", "Jenkins", "Git", "Linux"]
+      },
+      {
+        id: 10,
+        title: "Maquette SI avec DMZ sous Pfsense",
+        category: ["cloud"],
+        client: "Projet 3iL Limoges (2018–2019)",
+        img: null,
+        description: "Conception d’un système d’information virtualisé avec zones sécurisées et pare‑feu Pfsense.",
+        tasks: [
+          "Création de machines virtuelles (VirtualBox)",
+          "Définition des politiques d’accès par zone",
+          "Installation et configuration du pare‑feu Pfsense",
+          "Tests de connectivité inter‑zones"
+        ],
+        tools: ["VirtualBox", "Debian", "Windows", "MySQL", "Pfsense"]
+      },
+      {
+        id: 11,
+        title: "Supervision des services télécoms Orange Burkina",
+        category: ["cloud", "conseil"],
+        client: "Orange Burkina Faso (2018)",
+        img: null,
+        description: "Analyse des alertes des robots de test et automatisation des rapports qualité.",
+        tasks: [
+          "Interprétation des codes couleur et escalade des incidents",
+          "Maintenance des systèmes embarqués (purge, redémarrage)",
+          "Traitement de données en Python",
+          "Automatisation de rapports Excel sous VBA"
+        ],
+        tools: ["Python", "VBA", "Excel", "Outils de supervision"]
+      },
+      {
+        id: 12,
+        title: "Optimisation de la maintenance Airbus",
+        category: ["conseil"],
+        client: "AIRBUS (via AKKODIS, 2025)",
+        img: null,
+        description: "Algorithmes d’optimisation pour la planification de maintenance aéronautique sur 30 ans.",
+        tasks: [
+          "Développement de scripts Python avancés",
+          "Automatisation de plannings avec variables de coûts, durée, disponibilité",
+          "Algorithmes de sélection des plannings les plus rentables",
+          "Export de rapports Excel avec xlsxwriter"
+        ],
+        tools: ["Python", "Pandas", "datetime", "xlsxwriter"]
+      },
+      {
+        id: 13,
+        title: "Interface graphique pour drones SABRES",
+        category: ["web", "conseil"],
+        client: "AKKODIS (projet SABRES, 2025)",
+        img: null,
+        description: "Optimisation de l’interface de simulation pour une flotte de drones marins submersibles.",
+        tasks: [
+          "Étude de l’existant et proposition d’architecture",
+          "Développement générique des modules graphiques (PyQt5)",
+          "Module cartographique séparé (Folium)",
+          "Rapport de réalisation"
+        ],
+        tools: ["Python3", "PyQt5", "Matplotlib", "Folium", "Pandas"]
+      }
+    ];
+
+    // ---------- Génération des cartes ----------
+    const grid = document.getElementById('projects-grid');
+
+    function getCategoryClass(cat) {
+      if (cat === 'web') return 'cat-web';
+      if (cat === 'qa') return 'cat-qa';
+      if (cat === 'cloud') return 'cat-cloud';
+      if (cat === 'conseil') return 'cat-conseil';
+      return '';
+    }
+
+    function createCard(project) {
+      const card = document.createElement('div');
+      card.className = 'project-card bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 overflow-hidden flex flex-col';
+      card.setAttribute('data-categories', project.category.join(' '));
+
+      // Image ou placeholder
+      let imageHtml;
+      if (project.img) {
+        imageHtml = `<div class="h-44 md:h-48 flex items-center justify-center bg-gray-50 p-4">
+                        <img src="${project.img}" alt="${project.title}" class="max-h-full max-w-full object-contain" />
+                      </div>`;
+      } else {
+        const catClass = getCategoryClass(project.category[0]); // prend la première catégorie pour la couleur
+        const initial = project.title.charAt(0);
+        imageHtml = `<div class="h-44 md:h-48 project-placeholder ${catClass}">
+                        ${initial}
+                      </div>`;
+      }
+
+      card.innerHTML = `
+        ${imageHtml}
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="text-lg font-bold mb-1">${project.title}</h3>
+          <p class="text-xs text-gray-500 mb-3">${project.client}</p>
+          <p class="text-sm text-gray-700 flex-1">${project.description}</p>
+          <button class="mt-4 self-start text-accent font-medium text-sm hover:underline detail-btn">
+            Détails &rarr;
+          </button>
+        </div>
+      `;
+
+      // Écouteur pour ouvrir la modale
+      card.querySelector('.detail-btn').addEventListener('click', () => openModal(project));
+      return card;
+    }
+
+    // Remplir la grille
+    projects.forEach(proj => {
+      const card = createCard(proj);
+      grid.appendChild(card);
+    });
+
+    // ---------- Filtres ----------
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // style actif
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('bg-white', 'text-primary', 'border', 'border-primary');
+        });
+        btn.classList.add('bg-primary', 'text-white');
+        btn.classList.remove('bg-white', 'text-primary', 'border', 'border-primary');
+
+        const filter = btn.dataset.filter;
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+          const categories = card.dataset.categories.split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ---------- Modale ----------
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalClient = document.getElementById('modal-client');
+    const modalBody = document.getElementById('modal-body');
+    const modalClose = modal.querySelector('.modal-close');
+
+    function openModal(proj) {
+      modalTitle.textContent = proj.title;
+      modalClient.textContent = proj.client;
+      // Construction du contenu
+      let html = `<p class="font-semibold">Contexte</p><p>${proj.description}</p>`;
+      html += `<p class="font-semibold mt-3">Tâches réalisées</p><ul class="list-disc list-inside space-y-1">`;
+      proj.tasks.forEach(task => html += `<li>${task}</li>`);
+      html += `</ul>`;
+      html += `<p class="font-semibold mt-3">Outils</p><div class="flex flex-wrap gap-2 mt-1">`;
+      proj.tools.forEach(tool => html += `<span class="px-3 py-1 bg-gray-100 rounded-full text-xs">${tool}</span>`);
+      html += `</div>`;
+      modalBody.innerHTML = html;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+
+</body>
+</html>
