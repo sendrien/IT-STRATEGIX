@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANOU Emile Endrien | Ingénieur de conception informatique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="photo_profil.jpeg" rel="shortcut icon" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #0B260A;
+            --primary-soft: #143013;
+            --accent: #F0B597;
+            --accent-light: #F9DDD0;
+            --bg: #FAFAF7;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #4a4a4a;
+            --border: rgba(11, 38, 10, 0.08);
+            --radius: 14px;
+            --shadow: 0 6px 18px rgba(11, 38, 10, 0.05);
+            --transition: 0.2s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            display: flex;
+            min-height: 100vh;
+            font-size: 0.9rem;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            width: 280px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .sidebar-logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin: 0 auto 1.5rem;
+            display: block;
+            background: #1e3b1d;
+            box-shadow: 0 0 20px rgba(240, 181, 151, 0.2);
+        }
+        .sidebar-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+            margin-bottom: 0.2rem;
+            color: white;
+        }
+        .sidebar-title {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .sidebar-experience {
+            font-size: 0.75rem;
+            color: var(--accent-light);
+            text-align: center;
+            margin-bottom: 1.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+        }
+        .sidebar-experience i {
+            font-size: 0.7rem;
+            color: var(--accent);
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            margin-bottom: auto;
+        }
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            padding: 0.6rem 0.8rem;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .nav-menu a i { width: 18px; text-align: center; font-size: 0.9rem; }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(240, 181, 151, 0.12);
+            color: var(--accent-light);
+            transform: translateX(3px);
+        }
+        .sidebar-contact {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.2rem;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+        }
+        .sidebar-contact p {
+            margin: 0.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+        }
+        .sidebar-contact i { color: var(--accent); width: 14px; font-size: 0.7rem; }
+
+        /* Menu hamburger */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 200;
+            background: var(--primary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            margin-left: 280px;
+            width: 100%;
+            padding: 2.5rem 2rem 1.5rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 1.5rem;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1.5px;
+            background: linear-gradient(to right, var(--accent), transparent);
+            margin-left: 0.8rem;
+            border-radius: 2px;
+        }
+        .section-sub {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 20px rgba(11,38,10,0.06);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.7rem;
+            margin-top: 0.8rem;
+        }
+        .info-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.6rem 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        .info-item i { color: var(--accent); font-size: 0.95rem; }
+        /* La classe highlight n'est plus nécessaire ici car l'expérience est déplacée */
+        .info-item.highlight {
+            background: rgba(240, 181, 151, 0.1);
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .skill-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .skill-card h3 { margin-bottom: 0.6rem; font-size: 0.95rem; color: var(--primary); }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            justify-content: center;
+        }
+        .skill-tag {
+            background: rgba(240, 181, 151, 0.15);
+            color: var(--primary);
+            padding: 0.15rem 0.6rem;
+            border-radius: 16px;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 2.2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: var(--primary);
+            transition: height 2s ease;
+        }
+        .timeline.animate::before { height: 100%; }
+        .timeline-item {
+            margin-bottom: 1.6rem;
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .timeline-item:hover { border-color: var(--accent); }
+        
+        .timeline-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-header h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.8rem;
+        }
+        .date {
+            background: rgba(11,38,10,0.05);
+            padding: 0.15rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .task-list {
+            margin-top: 0.4rem;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .task-list li { margin-bottom: 0.15rem; }
+        .tools-used {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.7rem;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .project-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card h3 { color: var(--primary); font-size: 1.2rem; }
+        .project-date { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.3rem; }
+        .project-card p { font-size: 0.8rem; margin-bottom: 0.5rem; }
+        .project-links { margin-top: auto; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.45rem 1.3rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #1e441d;
+            box-shadow: 0 4px 12px rgba(11,38,10,0.2);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.8rem;
+        }
+        .edu-card {
+            border-left: 4px solid var(--primary);
+        }
+        .edu-card h4 { color: var(--primary); margin-bottom: 0.2rem; font-size: 0.9rem; }
+        .edu-card p { font-size: 0.8rem; }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+        }
+        .contact-info i { color: var(--primary); width: 1rem; font-size: 0.9rem; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .sidebar { width: 260px; }
+            .main-content { margin-left: 260px; padding: 2rem 1.5rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar {
+                transform: translateX(-100%);
+                width: 270px;
+                z-index: 150;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .menu-toggle { display: flex; }
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem 1.2rem;
+            }
+            .timeline { padding-left: 1.8rem; }
+            .timeline::before { left: 0.7rem; }
+            
+            .section-title { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar { width: 250px; padding: 2rem 1.2rem; }
+            .profile-pic { width: 100px; height: 100px; }
+            .sidebar-name { font-size: 1.2rem; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .timeline-header h3 { font-size: 1rem; }
+            .btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+</button>
+
+<aside class="sidebar" id="sidebar">
+    <img src="photo_profil.jpeg" alt="Photo Emile" class="profile-pic"
+         onerror="this.style.display='none'; this.insertAdjacentHTML('afterend','<div style=\'width:120px;height:120px;border-radius:50%;background:var(--accent);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:2rem;font-weight:bold;\'>ES</div>');">
+    <div class="sidebar-name">SANOU Emile Endrien</div>
+    <div class="sidebar-title">Ingénieur de conception informatique</div>
+    <div class="sidebar-experience"><i class="fas fa-clock"></i> +8 ans d'expérience</div>
+    <ul class="nav-menu">
+        <li><a href="#about" class="active"><i class="fas fa-user"></i> À propos</a></li>
+        <li><a href="#skills"><i class="fas fa-cog"></i> Compétences</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Expériences</a></li>
+        <li><a href="#projects"><i class="fas fa-code"></i> Projets</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Formation</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="sidebar-contact">
+        <p><i class="fas fa-map-marker-alt"></i> Ouagadougou, Burkina Faso</p>
+        <p><i class="fas fa-phone"></i> +226 70102193 | +226 04838355</p>
+        <p><i class="fas fa-envelope"></i> sendrien@yahoo.com</p>
+    </div>
+</aside>
+
+<main class="main-content">
+    <section id="about">
+        <h2 class="section-title"><i class="fas fa-user"></i> À propos</h2>
+        <p class="section-sub">Un aperçu de mon parcours et de mes informations personnelles.</p>
+        <div class="card" style="margin-bottom: 1rem;">
+            Ingénieur QA & automatisation avec plus de 8 ans d’expérience en tests web/mobile (fonctionnels, non-régression, performance, sécurité). Également à l’aise en administration systèmes & réseaux et en conception d’applications web/mobiles (Flutter, Django, PHP/MySQL). Maîtrise des environnements CI/CD, de Robot Framework et d’Azure DevOps.
+        </div>
+        <div class="info-grid">
+            <!-- L'élément d'expérience a été déplacé dans la sidebar -->
+            <div class="info-item"><i class="fas fa-flag"></i> Burkinabè</div>
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i> Ouagadougou</div>
+            <div class="info-item"><i class="fas fa-phone"></i> +226 70102193</div>
+            <div class="info-item"><i class="fas fa-envelope"></i> sendrien@yahoo.com</div>
+            <div class="info-item"><i class="fab fa-linkedin"></i> LinkedIn</div>
+            <div class="info-item"><i class="fas fa-language"></i> Français & Anglais </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title"><i class="fas fa-cog"></i> Compétences clés</h2>
+        <p class="section-sub">Mes domaines techniques et outils maîtrisés.</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-vial"></i>
+                <h3>QA / Tests</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Fonctionnels</span>
+                    <span class="skill-tag">Non-régression</span>
+                    <span class="skill-tag">Performance</span>
+                    <span class="skill-tag">Sécurité</span>
+                    <span class="skill-tag">Reporting</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-robot"></i>
+                <h3>Automatisation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Robot Framework</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Azure DevOps</span>
+                    <span class="skill-tag">Jenkins</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Développement</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Flutter/Dart</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">PHP/MySQL</span>
+                    <span class="skill-tag">API REST</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-server"></i>
+                <h3>Systèmes & Réseaux</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Linux/Windows</span>
+                    <span class="skill-tag">Supervision</span>
+                    <span class="skill-tag">Pfsense</span>
+                    <span class="skill-tag">Sécurité</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Électronique</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Conception</span>
+                    <span class="skill-tag">Maintenance</span>
+                    <span class="skill-tag">Diagnostic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences professionnelles</h2>
+        <p class="section-sub">Parcours complet avec missions, tâches et outils utilisés.</p>
+        <div class="timeline" id="experienceTimeline">
+
+            <!-- 1. SABRES -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant développeur d'interfaces – Projet SABRES</h3>
+                    <span class="date">06/2025 - 09/2025</span>
+                </div>
+                <div class="company">AKKODIS (Rennes, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Flotte de drones marins submersibles brise-lames (SABRES). Solution amovible déployée lors de risques de tempête.</p>
+                <ul class="task-list">
+                    <li>Étude de l'existant et installation de Python + librairies</li>
+                    <li>Optimisation de l'interface graphique IHM</li>
+                    <li>Développement de graphiques modulaires (générique et simple)</li>
+                    <li>Développement séparé du module cartographique (Folium)</li>
+                    <li>Rédaction du rapport des travaux</li>
+                </ul>
+                <div class="tools-used">Python3, PyQt5, PyQt WebEngine, Matplotlib, Folium, Pandas, VS Code</div>
+            </div>
+
+            <!-- 2. AIRBUS -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant en gestion de maintenance aéronautique (AIRBUS)</h3>
+                    <span class="date">03/2025 - 04/2025</span>
+                </div>
+                <div class="company">AKKODIS (Rennes, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Amélioration de la disponibilité des aéronefs et réduction des coûts via maintenance prédictive et GMAO.</p>
+                <ul class="task-list">
+                    <li>Développement de scripts Python pour planification sur 30 ans</li>
+                    <li>Automatisation des plannings avec contraintes (coûts, mécaniciens, réglementation)</li>
+                    <li>Algorithmes d'optimisation des plannings</li>
+                    <li>Export de rapports Excel avec pandas, xlsxwriter</li>
+                    <li>Collaboration avec assistant IA pour affiner les modèles</li>
+                </ul>
+                <div class="tools-used">Python3, pandas, datetime, xlsxwriter, VS Code</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); margin-top:0.3rem;">Réf. : Seillier Sébastien (sebastien.seillier@akkodis.com)</div>
+            </div>
+
+            <!-- 3. Orange Business Service -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant testeur QA & automation de tests</h3>
+                    <span class="date">09/2023 - 03/2025</span>
+                </div>
+                <div class="company">Orange Business Service (Rennes, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Projet Orange Business Lounge : vente de data via application web et mobile (iOS, Android & Web).</p>
+                <ul class="task-list">
+                    <li>Exécution des tests manuels web/mobile (iOS, Android)</li>
+                    <li>Analyse des logs, création de bugs</li>
+                    <li>Maintenance de tests automatisés et refonte du projet d'automatisation</li>
+                    <li>Automatisation des tests vitaux et de non-régression</li>
+                    <li>Création du plan de tests automatisés sur Jira</li>
+                    <li>Intégration sur Azure DevOps et configuration du pipeline CI/CD</li>
+                    <li>Analyse et livraison du rapport de tests automatisés</li>
+                </ul>
+                <div class="tools-used">Python3, Robot Framework 4, VS Code, Jira, Confluence, Azure DevOps</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); margin-top:0.3rem;">Réf. : DEBAILLY Timothée (timothee.debailly@orange.com, +33 7 87 75 49 38)</div>
+            </div>
+
+            <!-- 4. KORALPLAY -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant testeur QA & automaticien de tests</h3>
+                    <span class="date">04/2022 - 03/2023</span>
+                </div>
+                <div class="company">KORALPLAY (Nantes, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Éditeur de jeux et paris sportifs. Conception de solutions logicielles innovantes pour opérateurs de jeux.</p>
+                <ul class="task-list">
+                    <li>Rédaction et maintenance des spécifications de tests</li>
+                    <li>Documentation précise des tests et résultats</li>
+                    <li>Identification et signalement des bugs avant production</li>
+                    <li>Collaboration avec l'équipe de testeurs</li>
+                    <li>Automatisation des tests et lancement de tests de performance (K6)</li>
+                    <li>Analyse des résultats de performance</li>
+                </ul>
+                <div class="tools-used">Python3, MySQL Workbench, MongoDB, Robot Framework 4, K6, Jira, Confluence</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); margin-top:0.3rem;">Réf. : OUATTARA Kévin (kevin.ouattara@ixxitechside.com, +33 6 12 54 68 08)</div>
+            </div>
+
+            <!-- 5. Groupe Créative -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant automaticien de tests fonctionnels</h3>
+                    <span class="date">02/2022 - 04/2022</span>
+                </div>
+                <div class="company">Groupe Créative (Rennes, France)</div>
+                <ul class="task-list">
+                    <li>État des lieux du projet d'automatisation</li>
+                    <li>Proposition de refonte et installation des outils</li>
+                    <li>Lancement des tests existants et analyse des échecs</li>
+                    <li>Confrontation avec le cahier des charges</li>
+                    <li>Création d'anomalies sur Jira</li>
+                    <li>Mise à jour et automatisation de nouveaux tests</li>
+                    <li>Participation aux daily et démonstrations de sprint</li>
+                </ul>
+                <div class="tools-used">Python3.7.8, PostgreSQL, Robot Framework 4, SCRUM, Jira, Confluence</div>
+            </div>
+
+            <!-- 6. AGIR ARCO -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant développeur Python & automaticien</h3>
+                    <span class="date">01/2021 - 09/2021</span>
+                </div>
+                <div class="company">AGIR ARCO (Aix-en-Provence, France)</div>
+                <ul class="task-list">
+                    <li>Module de comparaison de fichiers bancaires XML/txt (SEPA)</li>
+                    <li>Module d'exécution automatique de requêtes SQL</li>
+                    <li>Automatisation de tests API SOAPUI</li>
+                    <li>Interface graphique Qt Designer pour piloter les modules</li>
+                    <li>Fichiers batch pour extraction et exécution</li>
+                </ul>
+                <div class="tools-used">Python3.8, PostgreSQL, Qt Designer, SOAPUI, z/OS, FileZilla, Jira</div>
+            </div>
+
+            <!-- 7. Orange Grenoble -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Stagiaire automaticien de tests fonctionnels & intégration</h3>
+                    <span class="date">02/2020 - 07/2020</span>
+                </div>
+                <div class="company">DSI / Orange Grenoble (Grenoble, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Application web de suivi du déploiement de la fibre optique. Enrichissement de l'automatisation avec Robot Framework.</p>
+                <ul class="task-list">
+                    <li>Montée en compétence et mise à jour des tests automatisés</li>
+                    <li>Développement des tests de non-régression et vitaux</li>
+                    <li>Scripts Python de traitement de données et d'images</li>
+                    <li>Optimisation du temps d'exécution des tests</li>
+                    <li>Exécution après MEP et analyse des échecs</li>
+                    <li>Échanges avec MOE, DEV, PPO, PO, Scrum Master</li>
+                    <li>Formation de l'équipe MOE à l'automatisation</li>
+                </ul>
+                <div class="tools-used">Python3.7, Pycharm, Robot Framework, Selenium, Git, Jenkins, WinSCP, PuTTY, Jira, Linux</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); margin-top:0.3rem;">Réf. : Gilles Machon (gilles.machon@orange.com, +33 4 38 42 84 56)</div>
+            </div>
+
+            <!-- 8. Grand Poitiers -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Stagiaire développeur d'application web</h3>
+                    <span class="date">06/2019 - 08/2019</span>
+                </div>
+                <div class="company">Communauté Urbaine Grand Poitiers (Poitiers, France)</div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.4rem;">Application web « Demande d'intervention » pour agents terrain en environnement mobile.</p>
+                <ul class="task-list">
+                    <li>Rédaction du cahier des charges</li>
+                    <li>Contact avec le client et utilisateurs finaux</li>
+                    <li>Développement de l'application (PHP7, Bootstrap 4)</li>
+                    <li>Mise en place d'un webservice REST</li>
+                    <li>Présentation aux parties prenantes</li>
+                </ul>
+                <div class="tools-used">PHP7, Bootstrap 4, PostgreSQL, JQuery, Git</div>
+            </div>
+
+            <!-- 9. Projet météo 3iL -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Projet application de gestion météo</h3>
+                    <span class="date">10/2019 - 01/2020</span>
+                </div>
+                <div class="company">3iL Informatique (Limoges, France)</div>
+                <ul class="task-list">
+                    <li>Scripts Python de transfert de données entre BDD</li>
+                    <li>Récupération et filtrage d'images du ciel</li>
+                    <li>Pixellisation et détermination de la couleur du ciel</li>
+                    <li>Modélisation de l'interface d'affichage</li>
+                    <li>Implémentation de la chaîne de Markov (IA) pour prévisions</li>
+                    <li>Intégration et présentation du projet</li>
+                </ul>
+                <div class="tools-used">Python3.7, Pycharm, SQL Server, MySQL, Anaconda, Qt Designer</div>
+            </div>
+
+            <!-- 10. Orange Burkina -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Consultant superviseur de service télécom</h3>
+                    <span class="date">02/2018 - 07/2018</span>
+                </div>
+                <div class="company">Orange (Ouagadougou, Burkina Faso)</div>
+                <ul class="task-list">
+                    <li>Analyse des alertes des robots de supervision</li>
+                    <li>Prise en charge et remontée des alertes significatives</li>
+                    <li>Échanges avec les ingénieurs sur site</li>
+                    <li>Maintenance des robots (purge, redémarrage)</li>
+                    <li>Traitement de données avec Python</li>
+                    <li>Automatisation de rapports Excel sous VBA</li>
+                    <li>Transmission des rapports journaliers/hebdomadaires/mensuels</li>
+                </ul>
+                <div class="tools-used">Python, VBA, Excel, outils de maintenance systèmes</div>
+            </div>
+
+            <!-- 11. Projet SI virtuelle Pfsense -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Projet maquette fonctionnelle SI virtuelle avec DMZ sous Pfsense</h3>
+                    <span class="date">09/2018 - 04/2019</span>
+                </div>
+                <div class="company">3iL Informatique (Limoges, France)</div>
+                <ul class="task-list">
+                    <li>Création de machines virtuelles (VirtualBox)</li>
+                    <li>Regroupement par zone d'accès</li>
+                    <li>Définition des politiques d'accès</li>
+                    <li>Installation et configuration du pare-feu Pfsense</li>
+                </ul>
+                <div class="tools-used">VirtualBox, MySQL, Debian 10, Windows</div>
+            </div>
+
+            <!-- 12. CDD AUF -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>CDD assistant administrateur réseaux informatique</h3>
+                    <span class="date">04/2017 - 09/2017</span>
+                </div>
+                <div class="company">Agence Universitaire de la Francophonie (Ouagadougou, Burkina Faso)</div>
+                <ul class="task-list">
+                    <li>Assistance aux utilisateurs des systèmes informatiques</li>
+                    <li>Maintenance des équipements informatiques et électriques</li>
+                    <li>Assistance technique lors de visioconférences</li>
+                    <li>Gestion des ateliers et accompagnement de l'administrateur réseaux</li>
+                    <li>Filmage, traitement et montage des visioconférences</li>
+                    <li>Formation des étudiants à l'utilisation des systèmes</li>
+                </ul>
+                <div class="tools-used">Python, Excel, outils de maintenance systèmes, Linux</div>
+            </div>
+
+            <!-- 13. Stage Ministère -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Stagiaire en management de systèmes et réseaux</h3>
+                    <span class="date">10/2016 - 01/2017</span>
+                </div>
+                <div class="company">Ministère de l'Économie et des Finances (Ouagadougou, Burkina Faso)</div>
+                <ul class="task-list">
+                    <li>Étude de l'existant</li>
+                    <li>Téléchargement, installation et configuration de GLPI</li>
+                    <li>Maintenance et rédaction du mémoire</li>
+                </ul>
+                <div class="tools-used">Windows, PHP, LDAP, Linux</div>
+            </div>
+
+            <!-- 14. Stage ASECNA -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Stagiaire en génie électronique et informatique industrielle</h3>
+                    <span class="date">09/2014 - 10/2014</span>
+                </div>
+                <div class="company">ASECNA (Bobo Dioulasso, Burkina Faso)</div>
+                <ul class="task-list">
+                    <li>Étude de l'existant et des équipements</li>
+                    <li>Conception d'un schéma électronique sur Proteus</li>
+                    <li>Réalisation d'un dispositif de contrôle de câbles RJ11/RJ45</li>
+                    <li>Rédaction du rapport</li>
+                </ul>
+                <div class="tools-used">Windows, Proteus, câbles réseau RJ45/RJ11</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title"><i class="fas fa-code"></i> Projets personnels</h2>
+        <p class="section-sub">Applications mobiles et web que j'ai conçues et développées.</p>
+        <div class="project-grid">
+            <div class="card project-card">
+                <h3>📱 Immo</h3>
+                <div class="project-date">2024 – 2025</div>
+                <p>Application mobile de gestion immobilière avec QR code.</p>
+                <div class="tools-used">Flutter, Dart, PHP/MySQL</div>
+                <div class="project-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.broboutik.immo" target="_blank" class="btn">Google Play</a>
+                </div>
+            </div>
+            <div class="card project-card">
+                <h3>🛒 Brosboutik</h3>
+                <div class="project-date">2022 – 2024</div>
+                <p>E-commerce multi-boutiques, paiements mobiles.</p>
+                <div class="tools-used">Django, MySQL, Raspberry Pi</div>
+                <div class="project-links">
+                    <a href="https://brosboutik.com/" target="_blank" class="btn">Visiter</a>
+                </div>
+            </div>
+            <div class="card project-card">
+                <h3>💚 Cash Vert</h3>
+                <div class="project-date">2023 – 2024</div>
+                <p>Suivi de budget et épargne verte.</p>
+                <div class="tools-used">Flutter, Firebase</div>
+                <div class="project-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.cashvert.cash_vert" target="_blank" class="btn">Google Play</a>
+                </div>
+            </div>
+            <div class="card project-card">
+                <h3>🌦️ Météo</h3>
+                <div class="project-date">2019 – 2020</div>
+                <p>Prévisions par IA (Markov).</p>
+                <div class="tools-used">Python, SQL Server</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formation</h2>
+        <p class="section-sub">Diplômes et cursus académique.</p>
+        <div class="edu-grid">
+            <div class="card edu-card"><h4>🎓 Ingénieur Informatique Bac+5</h4><p>3iL Limoges (2020)</p></div>
+            <div class="card edu-card"><h4>🎓 Master Management SI Réseaux</h4><p>Univ. Aube Nouvelle (2016)</p></div>
+            <div class="card edu-card"><h4>🎓 Licence Génie Élec & Info</h4><p>Univ. Nazi Boni (2014)</p></div>
+            <div class="card edu-card"><h4>📘 Baccalauréat</h4><p>Collège Tounouma (2011)</p></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
+        <p class="section-sub">N'hésitez pas à me contacter pour toute opportunité.</p>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> sendrien@yahoo.com</p>
+                <p><i class="fas fa-phone"></i> +226 70102193</p>
+                <p><i class="fab fa-linkedin"></i> <a href="http://www.linkedin.com/in/emile-endrien-sanou-903a74131" target="_blank" style="color:var(--primary); font-weight:600;">Profil LinkedIn</a></p>
+                <p><i class="fas fa-map-pin"></i> Ouagadougou, BURKINA FASO</p>
+            </div>
+            <div>
+                <p><strong>Références :</strong></p>
+                <p>DEBAILLY Timothée – timothee.debailly@orange.com</p>
+                <p>OUATTARA Kévin – kevin.ouattara@ixxitechside.com</p>
+                <p>MACHON Gilles – gilles.machon@orange.com</p>
+            </div>
+        </div>
+        <p style="margin-top:1.5rem;">
+            <a href="mailto:sendrien@yahoo.com" class="btn"><i class="far fa-paper-plane"></i> Me contacter</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> SANOU Emile Endrien – Fait à Rennes, le <span id="currentDate"></span></p>
+    </footer>
+</main>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                sidebar.classList.remove('open');
+            }
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.getElementById('experienceTimeline').classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    observer.observe(document.getElementById('experienceTimeline'));
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Date automatique dans le footer
+    const now = new Date();
+    document.getElementById('currentYear').textContent = now.getFullYear();
+    document.getElementById('currentDate').textContent = now.toLocaleDateString('fr-FR');
+</script>
+</body>
+</html>
